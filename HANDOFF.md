@@ -22,16 +22,20 @@ source .venv/bin/activate      # or: .venv/bin/python <script> without activatin
 
 This installs everything except the Arm 1 checkpoint (see below — too big for git).
 
-## 3. If your task needs the Arm 1 checkpoint
+## 3. Role assignments
+
+- **Adithya** — explainability extension + system design (stays on the
+  machine that already has the Arm 1 checkpoint, no file transfer needed)
+- **Adithyan** — Arm 2 (Gemini zero-shot)
+- **Balu** — literature review comparison matrix
 
 `outputs/arm1_classical/final_full_train.pt` (~1GB) is **not in git** —
-GitHub rejects files that size. If your task is the explainability
-extension, you need this file specifically: ask Adithya to send it via
-AirDrop/Drive (one-time, ~1GB). Put it at that exact path once you have it.
+GitHub rejects files that size. Only Adithya's task needs it, and it's
+already local there, so nobody else needs to receive this file.
 
 ## 4. Your task
 
-### If you're on Arm 2 (Gemini zero-shot)
+### Adithyan — Arm 2 (Gemini zero-shot)
 1. Get a free API key: https://aistudio.google.com/apikey
 2. `export GEMINI_API_KEY=...`
 3. Smoke-test first (5 calls, not 100 — check output looks sane before spending quota):
@@ -48,19 +52,18 @@ AirDrop/Drive (one-time, ~1GB). Put it at that exact path once you have it.
 7. Once you have numbers, drop them into one slide: Gemini zero-shot vs
    Arm 1 vs SYNAPSE paper vs our replication (4 bars, both label levels).
 
-### If you're on explainability + system design
-1. Get `final_full_train.pt` from Adithya (see step 3 above).
-2. Run: `python -m explainability.gradcam_arm1 --n 16 --level level2`
-3. Look through `outputs/explainability/gradcam/` (level1 heatmaps already
+### Adithya — explainability + system design
+1. Run: `python -m explainability.gradcam_arm1 --n 16 --level level2`
+2. Look through `outputs/explainability/gradcam/` (level1 heatmaps already
    exist from today, level2 ones you just generated) — pick 3-4 that make
    a clean visual point (a correct prediction where the heatmap lands on
    something sensible, plus one wrong prediction, is a stronger slide than
    4 random ones).
-4. Read `explainability/gradcam_arm1.py`'s docstring — explains why
+3. Read `explainability/gradcam_arm1.py`'s docstring — explains why
    Grad-CAM works on a frozen Swin transformer the way it normally works
    on a CNN's last conv layer (spoiler: `forward_features()` gives a 7x7
    spatial grid to hook into instead).
-5. For system design: open `Team14_System_Design_Review.md` (one level up
+4. For system design: open `Team14_System_Design_Review.md` (one level up
    from `code/`), pick one of the existing diagrams
    (`System design v5.jpg`, `Overall_Architecture_Elaborated.png`, or
    `refined_system_architecture_hld.svg`) as the canonical one, pair it
@@ -68,7 +71,7 @@ AirDrop/Drive (one-time, ~1GB). Put it at that exact path once you have it.
    Candidate B (parallel arms) over the sequential/layered alternatives,
    and the 5 named risks-and-fixes.
 
-### If you're on literature review
+### Balu — literature review
 1. Open `GROUP 14 LITERATURE REVIEW FL.pdf` (one level up from `code/`).
 2. Build a comparison table: rows = 4-5 most relevant papers (SYNAPSE plus
    whichever others are closest), columns = task / language / modality /
