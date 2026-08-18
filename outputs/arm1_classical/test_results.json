@@ -1,0 +1,6 @@
+{
+  "arm1_test_f1_level1": 0.5076000856347678,
+  "arm1_test_f1_level2": 0.39395711500974656,
+  "synapse_paper_test_f1_level2": 0.4256,
+  "synapse_replication_test_f1_level2": 0.3183
+}

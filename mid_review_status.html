@@ -1,0 +1,561 @@
+<title>Mid-Review Status</title>
+
+<style>
+  :root {
+    --paper: #f3f4ee;
+    --paper-raised: #fbfbf7;
+    --ink: #1c201d;
+    --ink-soft: #545c54;
+    --ink-faint: #7c8279;
+    --rule: #dbddd0;
+    --rule-strong: #c4c7b7;
+    --accent: #1f6f64;
+    --accent-ink: #12433c;
+    --accent-soft: #e3eee9;
+    --done: #2e7d4f;
+    --done-soft: #e4f3e9;
+    --partial: #9a6b0a;
+    --partial-soft: #f6ecd9;
+    --pending: #74796f;
+    --pending-soft: #eceee6;
+    --blocked: #9a4b3f;
+    --blocked-soft: #f5e7e3;
+    --shadow: 0 1px 2px rgba(28,32,29,0.06), 0 8px 24px -12px rgba(28,32,29,0.12);
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141713;
+      --paper-raised: #1b1f1a;
+      --ink: #eceee6;
+      --ink-soft: #aeb3a6;
+      --ink-faint: #7f857a;
+      --rule: #2b2f28;
+      --rule-strong: #3a3f36;
+      --accent: #55c2ab;
+      --accent-ink: #a9e6d6;
+      --accent-soft: rgba(85,194,171,0.14);
+      --done: #67c78d;
+      --done-soft: rgba(103,199,141,0.13);
+      --partial: #e3ac48;
+      --partial-soft: rgba(227,172,72,0.14);
+      --pending: #9aa094;
+      --pending-soft: rgba(154,160,148,0.10);
+      --blocked: #e2897a;
+      --blocked-soft: rgba(226,137,122,0.14);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141713;
+    --paper-raised: #1b1f1a;
+    --ink: #eceee6;
+    --ink-soft: #aeb3a6;
+    --ink-faint: #7f857a;
+    --rule: #2b2f28;
+    --rule-strong: #3a3f36;
+    --accent: #55c2ab;
+    --accent-ink: #a9e6d6;
+    --accent-soft: rgba(85,194,171,0.14);
+    --done: #67c78d;
+    --done-soft: rgba(103,199,141,0.13);
+    --partial: #e3ac48;
+    --partial-soft: rgba(227,172,72,0.14);
+    --pending: #9aa094;
+    --pending-soft: rgba(154,160,148,0.10);
+    --blocked: #e2897a;
+    --blocked-soft: rgba(226,137,122,0.14);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 20px 96px;
+  }
+  ::selection { background: var(--accent-soft); }
+
+  .wrap { max-width: 780px; margin: 0 auto; }
+
+  header.hero {
+    padding: 56px 0 28px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 36px;
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4.4vw, 40px);
+    line-height: 1.14;
+    margin: 0 0 12px;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-family: var(--sans);
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 22px;
+    max-width: 60ch;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .meta-row strong { color: var(--ink); font-weight: 600; }
+
+  /* Timeline strip */
+  .timeline {
+    margin: 30px 0 4px;
+    display: flex;
+    align-items: flex-start;
+    font-family: var(--sans);
+  }
+  .tl-node { flex: 1; position: relative; text-align: left; padding-top: 20px; }
+  .tl-node::before {
+    content: "";
+    position: absolute;
+    top: 6px; left: 0;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--rule-strong);
+  }
+  .tl-node::after {
+    content: "";
+    position: absolute;
+    top: 10px; left: 9px; right: -4px;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+  .tl-node:last-child::after { display: none; }
+  .tl-node.now::before { background: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .tl-node.future::before { background: var(--paper); }
+  .tl-day { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  .tl-label { font-size: 13.5px; color: var(--ink); margin-top: 2px; font-weight: 600; }
+  .tl-sub { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
+
+  section { margin: 52px 0; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .sec-num {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--accent-ink);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: 25px;
+    margin: 0;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  .sec-dek {
+    font-family: var(--sans);
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin: 8px 0 22px;
+    max-width: 62ch;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin: 30px 0 10px;
+  }
+  p { max-width: 68ch; }
+  a { color: var(--accent-ink); }
+
+  /* status pill */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+  .pill.done { background: var(--done-soft); color: var(--done); }
+  .pill.done::before { background: var(--done); }
+  .pill.partial { background: var(--partial-soft); color: var(--partial); }
+  .pill.partial::before { background: var(--partial); }
+  .pill.pending { background: var(--pending-soft); color: var(--pending); }
+  .pill.pending::before { background: var(--pending); }
+  .pill.blocked { background: var(--blocked-soft); color: var(--blocked); }
+  .pill.blocked::before { background: var(--blocked); }
+
+  /* tables */
+  .table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper-raised); }
+  table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 13.5px; min-width: 560px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 700; background: var(--paper); }
+  tr:last-child td { border-bottom: none; }
+  td.num, th.num { font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 12.5px; }
+  .table-wrap.tight table { min-width: 0; }
+
+  /* module / phase cards */
+  .modcard {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--pending);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: var(--paper-raised);
+  }
+  .modcard.done { border-left-color: var(--done); }
+  .modcard.partial { border-left-color: var(--partial); }
+  .modcard.blocked { border-left-color: var(--blocked); }
+  .modcard .row1 { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .modcard .name { font-family: var(--sans); font-weight: 700; font-size: 14.5px; }
+  .modcard .desc { font-family: var(--sans); font-size: 13px; color: var(--ink-soft); margin-top: 5px; max-width: 62ch; }
+
+  ul.clean, ol.clean { font-family: var(--sans); font-size: 14.5px; padding-left: 20px; }
+  ul.clean li, ol.clean li { margin-bottom: 7px; color: var(--ink); }
+  ul.clean li::marker { color: var(--accent); }
+
+  .callout {
+    background: var(--accent-soft);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: var(--sans);
+    font-size: 14px;
+    margin: 18px 0;
+  }
+  .callout.warn { background: var(--blocked-soft); }
+  .callout .lbl { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-ink); margin-bottom: 6px; display:block; }
+  .callout.warn .lbl { color: var(--blocked); }
+
+  /* day plan */
+  .dayplan { border-left: 2px solid var(--rule-strong); padding-left: 22px; margin-left: 4px; }
+  .day { position: relative; padding-bottom: 30px; }
+  .day:last-child { padding-bottom: 0; }
+  .day::before {
+    content: "";
+    position: absolute;
+    left: -27px; top: 3px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--accent);
+  }
+  .day-head { font-family: var(--sans); font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+  .day-date { font-family: var(--sans); font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .day-tasks { font-family: var(--sans); font-size: 14px; }
+  .day-tasks .t { display: flex; gap: 8px; margin-bottom: 6px; align-items: flex-start; }
+  .tag { font-family: var(--sans); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .tag.must { background: var(--done-soft); color: var(--done); }
+  .tag.skip { background: var(--pending-soft); color: var(--pending); }
+
+  .marks-bar { display: flex; height: 30px; border-radius: 6px; overflow: hidden; margin: 14px 0 6px; font-family: var(--sans); font-size: 0; border: 1px solid var(--rule); }
+  .marks-bar div { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; white-space: nowrap; }
+  .marks-legend { display: flex; flex-wrap: wrap; gap: 12px 18px; font-family: var(--sans); font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; }
+  .marks-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .marks-legend i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  footer { margin-top: 70px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 12px; color: var(--ink-faint); }
+
+  @media (max-width: 560px) {
+    .timeline { flex-direction: column; gap: 14px; }
+    .tl-node::after { display: none; }
+  }
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">Team 14 &middot; 22AIE498 Project Phase &middot; S7 Mid Review</p>
+  <h1 class="title">LLM-Augmented Multimodal Meme Understanding</h1>
+  <p class="subtitle">Stance classification, explainability, and cross-lingual analysis for low-resource Indian-language memes — status against the original proposal, work actually completed, and what's realistic to add before Mid Review.</p>
+  <div class="meta-row">
+    <span><strong>Team:</strong> Adithya Rajesh &middot; Adithyan R &middot; Balu M Krishna</span>
+    <span><strong>Guide:</strong> Dr. Veena G.</span>
+    <span><strong>Report date:</strong> 18 Aug 2026</span>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-node now">
+      <div class="tl-day">Today</div>
+      <div class="tl-label">Tue, 18 Aug</div>
+      <div class="tl-sub">Consolidate &amp; decide scope</div>
+    </div>
+    <div class="tl-node future">
+      <div class="tl-day">+1 day</div>
+      <div class="tl-label">Wed, 19 Aug</div>
+      <div class="tl-sub">Show progress to guide</div>
+    </div>
+    <div class="tl-node future">
+      <div class="tl-day">+2 days</div>
+      <div class="tl-label">Thu, 20 Aug</div>
+      <div class="tl-sub">Build &amp; consolidate</div>
+    </div>
+    <div class="tl-node future">
+      <div class="tl-day">+3 days</div>
+      <div class="tl-label">Fri, 21 Aug</div>
+      <div class="tl-sub">Mid Review</div>
+    </div>
+  </div>
+</header>
+
+<section id="proposed">
+  <div class="sec-head"><span class="sec-num">01</span><h2>What was proposed</h2></div>
+  <p class="sec-dek">From <em>Abstract_Team14.docx</em> and <em>Team14_System_Design_Review.md</em> — the committed objectives and architecture, not a re-derivation of them.</p>
+
+  <p>Political memes in Malayalam and Tamil are a major vehicle for opinion-shaping, but automated stance understanding (support / oppose / neutral) is almost unstudied for these languages. The one directly relevant paper, <strong>SYNAPSE (ACL 2026)</strong>, uses a single model and offers no explainability or cross-lingual analysis. The project's stated goal is the <strong>first systematic multi-model comparison</strong> — classical, prompted VLM, and fine-tuned VLM — for Dravidian-language meme stance classification, with explainability and cross-lingual transfer layered on top.</p>
+
+  <h3>Three parallel arms (the architectural core)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Arm</th><th>Approach</th><th>Models</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Arm 1</strong> — Classical baseline</td><td>Frozen vision + text encoders, residual fusion head, 5-fold CV. The anchor every other arm is measured against.</td><td>Swin-Tiny + MuRIL (BERT)</td></tr>
+        <tr><td><strong>Arm 2</strong> — VLM benchmarking</td><td>Zero-shot, few-shot, chain-of-thought prompting, both label levels</td><td>Gemini 2.5 Flash, PaliGemma-3B, Qwen2.5-VL-7B, LLaVA-1.6-7B</td></tr>
+        <tr><td><strong>Arm 3</strong> — PEFT fine-tuning</td><td>LoRA/QLoRA (4-bit) on open-weight VLMs; ablation on rank, adapter layer count, seed. Gemini gets a parallel prompt-optimisation track instead (API-only, can't be fine-tuned).</td><td>PaliGemma-3B, Qwen2.5-VL-7B, LLaVA-1.6-7B</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Plus four shared layers</h3>
+  <ul class="clean">
+    <li><strong>Explainability</strong> — Grad-CAM heatmaps + natural-language rationale generation, with an explicit faithfulness check between the two, as <em>one shared module</em> all arms call into.</li>
+    <li><strong>Cross-lingual transfer</strong> — Malayalam ↔ Tamil, on the secondary (misogyny) dataset only, since the primary political-meme dataset has no Tamil half. Two distinct sub-flows: checkpoint transfer (Arms 1/3) and prompt-language transfer (Arm 2).</li>
+    <li><strong>Evaluation</strong> — macro-F1 at both label levels, benchmarked against SYNAPSE (0.4256) and the Hateful Memes reference point.</li>
+    <li><strong>Demo app</strong> — Gradio/Streamlit; accepts a meme image + optional caption; model choice is a visible dropdown, not an automatic "best" pick.</li>
+  </ul>
+
+  <h3>Datasets as scoped</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dataset</th><th>Role</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td>Malayalam political memes</td><td>Primary — feeds Arms 1–3</td><td>500 train / 100 test, 2-level labels (20:1 imbalance)</td></tr>
+        <tr><td>Tamil + Malayalam misogyny memes</td><td>Secondary — cross-lingual transfer only</td><td>Not yet acquired</td></tr>
+        <tr><td>Hateful Memes (English)</td><td>Reference — Arm 2 zero-shot contextualisation only</td><td>Gated, registration required</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>System design (Candidate B — <em>parallel arms</em>, chosen over a sequential pipeline and a layered-service design) is already worked out in detail: HLD, LLD module table, a 5-risk self-critique with fixes, and diagrams already exist in the project folder (<code>System design v5.jpg</code>, <code>Overall_Architecture_Elaborated.png</code>, <code>refined_system_architecture_hld.svg</code>). That part of the rubric is largely in hand — see §4.</p>
+</section>
+
+<section id="buildplan">
+  <div class="sec-head"><span class="sec-num">02</span><h2>The build plan (from <em>instructions.md</em>)</h2></div>
+  <p class="sec-dek">The nine non-negotiable functional units and the phase order they were meant to be built in.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Unit</th><th>Depends on</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Data &amp; augmentation layer</td><td>—</td></tr>
+        <tr><td class="num">2</td><td>Arm 1 — classical baseline</td><td>Data layer</td></tr>
+        <tr><td class="num">3</td><td>Arm 2 — VLM benchmarking</td><td>Data layer</td></tr>
+        <tr><td class="num">4</td><td>Arm 3 — PEFT fine-tuning</td><td>Data layer, A100 access</td></tr>
+        <tr><td class="num">5</td><td>Synthetic data augmentation</td><td>Data layer</td></tr>
+        <tr><td class="num">6</td><td>Explainability &amp; faithfulness</td><td>Arms 1–3 producing predictions</td></tr>
+        <tr><td class="num">7</td><td>Cross-lingual transfer</td><td>Secondary dataset acquired; Arms 1/3 checkpoints</td></tr>
+        <tr><td class="num">8</td><td>Evaluation &amp; comparison</td><td>All arms</td></tr>
+        <tr><td class="num">9</td><td>Demo app</td><td>Any working model (can stub earlier)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Build order was Phase 0 (setup) → Phase 1 (data/splits, frozen once) → Phase 2 (Arm 1) → Phase 3 (Arm 2) → Phase 4 (Arm 3) → Phase 5 (explainability) → Phase 6 (cross-lingual) → Phase 7 (evaluation) → Phase 8 (demo). Phases 1–2 were explicitly callable on a laptop with no compute dependency, which is exactly what got built.</p>
+</section>
+
+<section id="done">
+  <div class="sec-head"><span class="sec-num">03</span><h2>What's actually done</h2></div>
+  <p class="sec-dek">Verified against the repo directly — <code>arm1_classical/</code>, <code>outputs/arm1_classical/</code>, <code>data/</code> — not just against notes.</p>
+
+  <div class="modcard done">
+    <div class="row1"><span class="name">Data layer (MVP scope)</span><span class="pill done">Done</span></div>
+    <div class="desc">Primary dataset (500 train / 100 test) verified and in place. Canonical 5-fold stratified split frozen (<code>data/splits/malayalam_train_folds.csv</code>, seed 42, stratified on the harder-imbalanced Level-1 label). Imbalance handling decided and logged: class-weighted loss, not augmentation — augmentation conditions explicitly deferred to Phase II by team decision on 15 Aug.</div>
+  </div>
+
+  <div class="modcard done">
+    <div class="row1"><span class="name">Arm 1 — Classical baseline</span><span class="pill done">Done</span></div>
+    <div class="desc">Frozen Swin-Tiny + frozen MuRIL, residual fusion head, class-weighted loss. OCR text (Tesseract) used as the text-branch input, since the source data has no caption field. 5-fold CV run, plus a final train-on-all/eval-on-held-out-100 run — the number that's actually comparable to SYNAPSE.</div>
+  </div>
+
+  <h3>Arm 1 results</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th class="num">Level-1 macro-F1</th><th class="num">Level-2 macro-F1</th><th>Basis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Arm 1 (this project)</strong></td><td class="num">0.5076</td><td class="num"><strong>0.3940</strong></td><td>Trained on all 500, evaluated on the true 100-row held-out test set</td></tr>
+        <tr><td>Arm 1, 5-fold CV mean</td><td class="num">0.6119</td><td class="num">0.4550</td><td>Averaged across 5 folds carved from the 500 train rows — a stability read, not the head-to-head number</td></tr>
+        <tr><td>Our SYNAPSE replication</td><td class="num">0.6564</td><td class="num">0.3183</td><td><code>../test fyp/</code> — 2B model, 8-bit, Apple Silicon (<code>mlx-vlm</code>)</td></tr>
+        <tr><td>SYNAPSE paper (ACL 2026)</td><td class="num">0.9200</td><td class="num">0.4256</td><td>Reported number, full fine-tuned setup</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <span class="lbl">How this reads</span>
+    Arm 1's classical baseline (0.3940 Level-2) lands between our own SYNAPSE replication (0.3183) and the paper's fine-tuned-VLM number (0.4256) — a legitimate, defensible anchor result, not a discardable one. It is a genuinely comparable data point because it's evaluated on the same held-out 100-row test set SYNAPSE's own numbers come from.
+  </div>
+
+  <h3>Caveats already on record — state these up front, don't let the viva surface them first</h3>
+  <ul class="clean">
+    <li>Only 8 epochs, no learning-rate schedule or hyperparameter search — a first working run, not a tuned one. Likely has headroom.</li>
+    <li>OCR text has noise; roughly 20% of extractions are empty (no visible text, or Tesseract miss) and haven't been manually verified against ground truth.</li>
+    <li>Both backbones (Swin-Tiny, MuRIL) are fully frozen — only the fusion head is trained, per the spec. This is a designed constraint, not an oversight, but be ready to say so.</li>
+  </ul>
+</section>
+
+<section id="pending">
+  <div class="sec-head"><span class="sec-num">04</span><h2>What's pending</h2></div>
+  <p class="sec-dek">Every other module in <code>code/</code> — <code>arm2_vlm_benchmark/</code>, <code>arm3_peft_finetune/</code>, <code>explainability/</code>, <code>cross_lingual/</code>, <code>evaluation/</code>, <code>demo/</code>, <code>data/secondary/</code>, <code>data/reference/</code> — is currently empty.</p>
+
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Arm 2 — VLM benchmarking</span><span class="pill pending">Not started</span></div>
+    <div class="desc">Zero folders populated. Gemini 2.5 Flash is API-only and needs no GPU — this is the cheapest remaining arm to stand up. PaliGemma-3B may run locally via <code>mlx-vlm</code>. Qwen2.5-VL-7B and LLaVA-1.6-7B need the A100.</div>
+  </div>
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Arm 3 — PEFT fine-tuning</span><span class="pill blocked">Blocked / not started</span></div>
+    <div class="desc">Needs confirmed A100 access (40GB vs 80GB, booking model, per-job limits — none of this is confirmed in the notes) before a single run can be timed, let alone the ablation grid.</div>
+  </div>
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Explainability &amp; faithfulness</span><span class="pill pending">Not started</span></div>
+    <div class="desc">Grad-CAM on Arm 1 is the cheapest possible slice — checkpoints already exist (<code>outputs/arm1_classical/*.pt</code>), it's a frozen CNN, hooks are simple.</div>
+  </div>
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Cross-lingual transfer</span><span class="pill blocked">Hard blocked</span></div>
+    <div class="desc">Secondary (Tamil+Malayalam misogyny) dataset not acquired — access/registration never started per the repo. Cannot run regardless of remaining time.</div>
+  </div>
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Reference dataset (Hateful Memes)</span><span class="pill blocked">Hard blocked</span></div>
+    <div class="desc">Gated dataset (Meta/DrivenData), registration not started. Only feeds Arm 2's zero-shot contextualisation pass, so it's droppable without touching the core comparison.</div>
+  </div>
+  <div class="modcard partial">
+    <div class="row1"><span class="name">Evaluation &amp; comparison module</span><span class="pill partial">Informal only</span></div>
+    <div class="desc"><code>RESULTS.md</code> covers Arm 1 vs. SYNAPSE by hand. No aggregation module exists yet because there's only one arm's output to aggregate.</div>
+  </div>
+  <div class="modcard blocked">
+    <div class="row1"><span class="name">Demo app</span><span class="pill pending">Not started</span></div>
+    <div class="desc">Explicitly designed to be stubbable early (fake predictions, real UI) — hasn't been started even at that level.</div>
+  </div>
+
+  <div class="callout warn">
+    <span class="lbl">Two blockers with lead time — surface these to your guide tomorrow, don't try to out-work them</span>
+    (1) A100 access model is unconfirmed — booking system vs. dedicated, per-job time limits. This gates all of Arm 3 and half of Arm 2. (2) Secondary and reference dataset access was never requested. Both are the kind of delay that more hours can't fix — flag them explicitly rather than quietly absorbing the risk.
+  </div>
+</section>
+
+<section id="plan">
+  <div class="sec-head"><span class="sec-num">05</span><h2>What to actually do in 3 days</h2></div>
+  <p class="sec-dek">The honest read: you have one solid, defensible result (Arm 1) and empty folders everywhere else. That is a normal place to be at Mid Review — the rubric doesn't require all nine units finished. Spend the 3 days where the marks actually are.</p>
+
+  <h3>Where the marks are</h3>
+  <div class="marks-bar">
+    <div style="width:25%; background:#3d6f63;">Viva 10</div>
+    <div style="width:25%; background:#1f6f64;">Design 10</div>
+    <div style="width:12.5%; background:#8fa89e; color:#12332d;">Lit. 5</div>
+    <div style="width:25%; background:#9a6b0a;">Progress 10</div>
+    <div style="width:12.5%; background:#c4b184; color:#3a2f0f;">Deck 5</div>
+  </div>
+  <p style="font-family:var(--sans); font-size:13px; color:var(--ink-soft); max-width:60ch;">
+    "Project progress / implementation" is <strong>10 of 40 marks</strong> — the same weight as system design alone, and less than viva + design combined (20). Three of the five criteria (viva, design, literature review — <strong>25 marks</strong>) can be finished to a high standard from what already exists, with no GPU, no new dataset, and no risk of a broken demo mid-viva. Don't spend all three days chasing Arm 2/3 at the expense of these.
+  </p>
+
+  <h3>Must-do (cheap, no blocked dependencies, ~2 days of focused work)</h3>
+  <ol class="clean">
+    <li><strong>One real second data point for Arm 2</strong> — Gemini 2.5 Flash zero-shot, both label levels, on the same 100-image held-out test set Arm 1 was scored on. API-only, no A100 needed. This is what turns "three arms" from a promise into something structurally visible, which is the project's whole stated novelty.</li>
+    <li><strong>Grad-CAM on Arm 1</strong> — checkpoints already exist; this is a few hours of hook-wiring on a frozen CNN, not a research problem. Gives explainability a real, visual, partial deliverable instead of a "not started" line.</li>
+    <li><strong>Literature review comparison matrix</strong> — the 15-paper review, research-gap, and novelty sections already exist in <code>GROUP 14 LITERATURE REVIEW FL.pdf</code>. The rubric wants an explicit 4–5-paper side-by-side matrix (task / language / modality / explainability / fine-tuning / <em>this work</em>) — that's a reformatting pass over material you've already written, not new research.</li>
+    <li><strong>Finalize the system design artifact</strong> — diagrams already exist (<code>System design v5.jpg</code>, <code>Overall_Architecture_Elaborated.png</code>, <code>refined_system_architecture_hld.svg</code>). Pick one canonical version, pair it with the LLD module table from the design review doc, and rehearse defending the tech-stack choices (Swin-Tiny vs. a bigger CNN, MuRIL vs. mBERT, why LoRA/QLoRA, why Gradio) — this is prep time, not build time.</li>
+    <li><strong>One consolidated evaluation table</strong> — SYNAPSE paper (0.4256) vs. your replication (0.3183) vs. Arm 1 (0.3940) vs. Arm 2-Gemini (once run). Thirty minutes once #1 lands.</li>
+    <li><strong>Slide deck, ≤20 slides</strong>, diagrams and tables over paragraphs, speaking time split evenly across all three members.</li>
+  </ol>
+
+  <h3>Explicitly skip — say "planned, next milestone," don't half-build</h3>
+  <ol class="clean">
+    <li><strong>Arm 3 (PEFT fine-tuning)</strong> — needs confirmed A100 access plus hours of per-architecture QLoRA debugging. A broken half-attempt reads worse in a viva than a clean "scoped, blocked on compute confirmation, first run planned for [date]" slide.</li>
+    <li><strong>Full Arm 2 grid</strong> (4 models × 3 prompting strategies × 2 levels) — only run the Gemini zero-shot slice above. State the rest as scoped-but-not-yet-run rather than attempting all 12+ configurations in 3 days.</li>
+    <li><strong>Cross-lingual transfer</strong> — hard blocked on the secondary dataset. Don't spend review time here at all.</li>
+    <li><strong>Hateful Memes reference pass</strong> — gated dataset, not acquired. Same treatment.</li>
+    <li><strong>Demo app</strong> — only attempt a stub if #1–#4 land with a full day to spare. Otherwise one slide describing the planned UI (dropdown model choice, Grad-CAM overlay, confidence) is sufficient — it's specified in enough detail already to describe convincingly without building it.</li>
+  </ol>
+
+  <h3>Day-by-day</h3>
+  <div class="dayplan">
+    <div class="day">
+      <div class="day-date">Today</div>
+      <div class="day-head">Tue 18 Aug — consolidate &amp; assign</div>
+      <div class="day-tasks">
+        <div class="t"><span class="tag must">Team</span> Agree the scoped list above as the plan; decide who owns Gemini-Arm2, who owns Grad-CAM, who owns the lit-review matrix + design-defense prep.</div>
+        <div class="t"><span class="tag must">Team</span> Prepare a 5-minute walkthrough for tomorrow's guide check-in: Arm 1 result, the scoped plan, and the two hard blockers (A100 access, dataset access) — ask the guide to help unblock or formally bless dropping them from Mid Review scope.</div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-date">Wed 19 Aug</div>
+      <div class="day-head">Guide check-in, then build</div>
+      <div class="day-tasks">
+        <div class="t"><span class="tag must">AM</span> Guide meeting — get sign-off on scope before spending the remaining time.</div>
+        <div class="t"><span class="tag must">PM</span> Build Gemini Arm 2 zero-shot (prompt design → API calls → parse → macro-F1) and the lit-review matrix, in parallel — no dependency between them.</div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-date">Thu 20 Aug</div>
+      <div class="day-head">Explainability + evaluation + deck skeleton</div>
+      <div class="day-tasks">
+        <div class="t"><span class="tag must">AM</span> Grad-CAM on Arm 1; consolidated evaluation table once Arm 2's numbers exist.</div>
+        <div class="t"><span class="tag must">PM</span> Slide deck skeleton — diagrams and tables dropped in, not written from scratch the night before.</div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="day-date">Fri 21 Aug</div>
+      <div class="day-head">Mid Review</div>
+      <div class="day-tasks">
+        <div class="t"><span class="tag must">AM</span> Final numbers into slides, rehearse individual viva segments, confirm every member can defend their own module line-by-line.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Viva readiness — assign by what's actually defensible</h3>
+  <p>The rubric wants each member explaining <em>their own module</em>, code line-by-line, including edge-case handling. With only Arm 1 as working code, split ownership so nobody is stuck defending code they didn't write:</p>
+  <ul class="clean">
+    <li><strong>Arm 1 owner</strong> — walk <code>dataset.py</code> / <code>model.py</code> / <code>train.py</code> / <code>train_final_and_eval.py</code> line-by-line: why frozen backbones, the residual fusion head, class-weighted loss math, the 5-fold stratification choice (stratified on Level-1, not the joint label — 1 example train-wide in one joint class breaks 5-fold), and how empty-OCR rows are handled.</li>
+    <li><strong>System design owner</strong> — defend Candidate B over the sequential and layered-service alternatives from the decision matrix, and the five risks-and-fixes (triplicated explainability, Gemini's asymmetric fine-tuning status, imbalance handling, the two cross-lingual sub-flows, the demo's visible-dropdown fix). This is fully viva-ready without any additional code.</li>
+    <li><strong>Lit review / evaluation owner</strong> — the comparison matrix, the research-gap narrative, and the SYNAPSE/replication/Arm-1 evaluation table above. Also the natural owner of whichever Arm 2 result gets built, since it's the newest work.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="lbl">Framing that works in your favor</span>
+    State the Arm 1 caveats (8 epochs, no HP search, frozen backbones, unverified OCR) as a deliberate "what two more weeks buys us" slide rather than letting them surface as a gotcha in viva. It directly answers the "how does your code handle edge cases" prompt and reads as scientific maturity, not a gap.
+  </div>
+</section>
+
+<footer>
+  Sources: <code>Abstract_Team14.docx</code>, <code>Team14_System_Design_Review.md</code>, <code>code/instructions.md</code>, <code>code/data/DECISIONS.md</code>, <code>code/outputs/arm1_classical/RESULTS.md</code>, <code>code/outputs/arm1_classical/{cv_results,test_results}.json</code>, <code>GROUP 14 LITERATURE REVIEW FL.pdf</code>, and a directory check of every arm/module folder under <code>code/</code> on 18 Aug 2026.
+</footer>
+
+</div>
