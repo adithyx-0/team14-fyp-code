@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meme Triage</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #fff; --text: #1b1f24; --muted: #5d6673; --line: #dde1e7;
+    --accent: #2457d6; --warn-bg: #fff4d6; --warn: #8a5a00; --ok: #1f7a3d; --bar: #2457d6; --track: #e8ebf0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171b; --card: #1e2227; --text: #e9ecf0; --muted: #a0a8b3; --line: #343a42;
+      --accent: #6c93ff; --warn-bg: #3a3017; --warn: #f0c36a; --ok: #5cc784; --bar: #6c93ff; --track: #2c3138;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .drop { border: 2px dashed var(--line); border-radius: 10px; padding: 28px 12px; text-align: center;
+          color: var(--muted); cursor: pointer; }
+  .drop.over { border-color: var(--accent); color: var(--accent); }
+  .drop img { max-width: 100%; max-height: 320px; border-radius: 8px; }
+  input[type=text] { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 8px;
+                     background: var(--bg); color: var(--text); font: inherit; margin-top: 12px; }
+  label { font-size: .9rem; color: var(--muted); display: block; margin-top: 12px; }
+  button { margin-top: 14px; padding: 10px 20px; border: 0; border-radius: 8px; background: var(--accent);
+           color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .flag { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 12px; font-weight: 600; }
+  .ok { color: var(--ok); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .grid img { width: 100%; border-radius: 8px; border: 1px solid var(--line); }
+  h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .pred { font-size: 1.3rem; font-weight: 700; }
+  .row { display: flex; align-items: center; gap: 8px; font-size: .9rem; margin: 4px 0; }
+  .row .name { width: 96px; color: var(--muted); }
+  .track { flex: 1; height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; }
+  .fill { height: 100%; background: var(--bar); }
+  .note { font-size: .85rem; color: var(--muted); }
+  .err { color: #c0392b; font-weight: 600; }
+  details { margin-top: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Malayalam political meme triage</h1>
+  <p class="sub">Upload a meme to see whether it trolls or supports, and who it targets. A decision aid for human reviewers, not an automatic verdict.</p>
+
+  <div class="card">
+    <div id="drop" class="drop" tabindex="0">Drop a meme image here, or click to choose a file</div>
+    <input id="file" type="file" accept="image/*" hidden>
+    <label for="caption">Meme text (optional — if empty, the text is read from the image with OCR)</label>
+    <input id="caption" type="text" maxlength="500" placeholder="Paste the Malayalam caption here for better accuracy">
+    <button id="go" disabled>Analyse</button>
+    <div id="status" class="note" role="status" aria-live="polite"></div>
+  </div>
+
+  <div id="result" hidden>
+    <div id="flag" class="card"></div>
+    <div class="grid">
+      <div class="card" id="l1"></div>
+      <div class="card" id="l2"></div>
+    </div>
+    <div class="card note" id="meta"></div>
+  </div>
+
+  <div class="card note">
+    <strong>How reliable is this?</strong> The model (frozen Swin-Tiny image encoder + MuRIL text encoder, small trained head) scored macro-F1 0.51 on intent and 0.39 on target on a 100-meme held-out test set — better than always guessing the majority class, but far from reliable. "Support" memes are rare in the training data (23 of 500), so they are often missed. The heatmaps show which image regions most influenced the prediction (Grad-CAM); in testing they were clearly more faithful than random regions, but they are coarse (7×7). Uploaded images are processed in memory and not stored.
+  </div>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const drop = $("drop"), fileIn = $("file"), go = $("go"), statusEl = $("status");
+let file = null;
+
+function pick(f) {
+  if (!f || !f.type.startsWith("image/")) { statusEl.innerHTML = '<span class="err">Please choose an image file.</span>'; return; }
+  file = f; go.disabled = false; statusEl.textContent = "";
+  const url = URL.createObjectURL(f);
+  drop.innerHTML = "";
+  const im = document.createElement("img"); im.src = url; im.alt = "Selected meme";
+  drop.appendChild(im);
+}
+drop.onclick = () => fileIn.click();
+drop.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") fileIn.click(); };
+fileIn.onchange = () => pick(fileIn.files[0]);
+drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+drop.ondragleave = () => drop.classList.remove("over");
+drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); pick(e.dataTransfer.files[0]); };
+
+function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+function levelCard(title, hint, d) {
+  const bars = Object.entries(d.probabilities).sort((a, b) => b[1] - a[1]).map(([k, p]) =>
+    `<div class="row"><span class="name">${esc(k)}</span><div class="track"><div class="fill" style="width:${(p*100).toFixed(0)}%"></div></div><span>${(p*100).toFixed(0)}%</span></div>`).join("");
+  return `<h2>${title}</h2><div class="note">${hint}</div>
+    <div class="pred">${esc(d.prediction)} <span class="note">(${(d.confidence*100).toFixed(0)}% confident)</span></div>
+    ${bars}
+    <details open><summary class="note">Heatmap: where the model looked</summary><img src="${d.heatmap}" alt="Grad-CAM heatmap for ${title}"></details>`;
+}
+
+go.onclick = async () => {
+  go.disabled = true; statusEl.textContent = "Analysing… (the first request loads the model and can take a minute)";
+  $("result").hidden = true;
+  const fd = new FormData(); fd.append("file", file); fd.append("caption", $("caption").value);
+  try {
+    const r = await fetch("/api/analyze", { method: "POST", body: fd });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.detail || "Request failed");
+    $("l1").innerHTML = levelCard("Intent", "Does the meme troll/criticise, or support?", j.levels.level1);
+    $("l2").innerHTML = levelCard("Target", "Who is it about?", j.levels.level2);
+    $("flag").innerHTML = j.needs_review
+      ? '<div class="flag">Needs human review — the model is not confident on at least one question.</div>'
+      : '<span class="ok">Model confidence is above the review threshold.</span> <span class="note">It can still be wrong; please verify.</span>';
+    const notes = j.notes.map((n) => `<div>${esc(n)}</div>`).join("");
+    $("meta").innerHTML = `Text used (${esc(j.text_source)}): ${j.text_used ? "“" + esc(j.text_used.slice(0, 200)) + "”" : "<em>none</em>"}${notes}`;
+    $("result").hidden = false; statusEl.textContent = "";
+  } catch (e) {
+    statusEl.innerHTML = `<span class="err">${esc(e.message)}</span>`;
+  } finally { go.disabled = false; }
+};
+</script>
+</body>
+</html>
