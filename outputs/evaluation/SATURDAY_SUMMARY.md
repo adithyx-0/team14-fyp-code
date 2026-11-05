@@ -35,7 +35,6 @@ Task: Malayalam political memes, two labels. Level 1 = troll vs support; Level 2
 - Cross-lingual transfer, Hateful Memes and the Tamil+Malayalam set are not run (datasets not obtained).
 - **Oversampling gain is not established.** Seeds 43/44 finished: Avg 0.520 ± 0.070 vs plain r4 0.460 ± 0.067, a 0.06 gap smaller than the seed std. The 0.692 L1 came from seed 42 only; seeds 43/44 sit at the majority-baseline L1 (0.490). L2 is more encouraging (0.482 ± 0.032 vs 0.349 ± 0.075) but every oversampled seed's CI vs Arm 1 contains 0 (p = 0.11 / 0.46 / 0.18).
 - r8 and r16 have one seed each, so they cannot be compared with r4.
-- `consolidated.md` prints population std (ddof=0, e.g. r4 L1 ±0.059); this summary uses sample std (ddof=1, ±0.073), the right choice for n=3. The two files should be reconciled.
 
 ## Gap to the paper (SYNAPSE, reported not reproduced)
 - Paper: L1 0.9200, L2 0.4256, Avg 0.6728 (quoted from our replication notes; the paper itself is not in the folder).

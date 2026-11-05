@@ -1,6 +1,6 @@
 # Consolidated evaluation — Malayalam held-out test set (n=100)
 
-Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed 42). UNKNOWN predictions count as wrong. Avg-F1 = mean of level1 and level2 macro-F1.
+Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed 42). UNKNOWN predictions count as wrong. Avg-F1 = mean of level1 and level2 macro-F1. Seed ± is sample std (ddof=1). Bootstrap convention: a resample with no instance of a class scores that class F1=0 (affects ~1.7% of L1 resamples, 0.96^100, slightly widening the lower CI).
 
 | System | Level-1 macro-F1 [95% CI] | Level-2 macro-F1 [95% CI] | Avg-F1 [95% CI] | UNKNOWN L1/L2 |
 |---|---|---|---|---|
@@ -27,8 +27,8 @@ Single seeds are not reliable at n=100; judge a config by its seed mean, not its
 | Config | Seeds | Level-1 macro-F1 | Level-2 macro-F1 | Avg-F1 |
 |---|---|---|---|---|
 | r16 | 1 | 0.630 (n=1) | 0.234 (n=1) | 0.432 (n=1) |
-| r4 | 3 | 0.571 ± 0.059 | 0.349 ± 0.061 | 0.460 ± 0.055 |
-| r4_os | 3 | 0.557 ± 0.095 | 0.482 ± 0.026 | 0.520 ± 0.057 |
+| r4 | 3 | 0.571 ± 0.073 | 0.349 ± 0.075 | 0.460 ± 0.067 |
+| r4_os | 3 | 0.557 ± 0.117 | 0.482 ± 0.032 | 0.520 ± 0.070 |
 | r8 | 1 | 0.609 (n=1) | 0.329 (n=1) | 0.469 (n=1) |
 
 ## Paired bootstrap vs Arm 1

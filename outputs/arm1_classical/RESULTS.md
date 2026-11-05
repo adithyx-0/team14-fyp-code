@@ -9,8 +9,9 @@ in the source data — see `data/ocr_extract.py`).
 Mean across folds: **level1 macro-F1 = 0.6119, level2 macro-F1 = 0.4550**
 
 ## Final eval on the real 100-example held-out test set (`test_results.json`)
-Trained once on the full train set, evaluated on `test.csv` — the number
-that's actually comparable to SYNAPSE's reported test-set results:
+Trained once on the full train set, evaluated on `test.csv` — the held-out
+number. It is placed beside SYNAPSE's reported scores for context only; whether the paper
+scored on this same split is **unverified** (see `DEVIATIONS.md`):
 
 | | Level-1 macro-F1 | Level-2 macro-F1 |
 |---|---|---|
@@ -23,9 +24,10 @@ replication and the paper's own fine-tuned VLM number on Level-2 — a
 legitimate anchor result. Note the CV mean (0.4550) and the single
 train/test-split number (0.3940) are *not* the same measurement: CV mean
 is averaged over folds carved out of the 500 train examples, the test-set
-number is trained on all 500 and evaluated on the true, separate 100-example
-held-out set that SYNAPSE's own numbers come from. Report the test-set
-number (0.3940) when comparing head-to-head against SYNAPSE; report the CV
+number is trained on all 500 and evaluated on the separate 100-example
+held-out set (the DravidianLangTech test set per our replication notes; not confirmed
+to be the split the paper used). Report the test-set number (0.3940) as Arm 1's
+held-out result, and compare to the paper's numbers only with that caveat; report the CV
 mean (0.4550) when characterizing Arm 1's own stability across folds.
 
 Caveats to state in the write-up (same class as the SYNAPSE replication's

@@ -198,7 +198,9 @@ def main():
 
     L = ["# Consolidated evaluation — Malayalam held-out test set (n=%d)\n" % len(gold),
          f"Macro-F1 with 95% percentile-bootstrap CIs ({args.n_boot} resamples of the test set, seed {args.seed}). "
-         "UNKNOWN predictions count as wrong. Avg-F1 = mean of level1 and level2 macro-F1.\n",
+         "UNKNOWN predictions count as wrong. Avg-F1 = mean of level1 and level2 macro-F1. "
+         "Seed ± is sample std (ddof=1). Bootstrap convention: a resample with no instance of a class scores that class F1=0 "
+         "(affects ~1.7% of L1 resamples, 0.96^100, slightly widening the lower CI).\n",
          "| System | Level-1 macro-F1 [95% CI] | Level-2 macro-F1 [95% CI] | Avg-F1 [95% CI] | UNKNOWN L1/L2 |", "|---|---|---|---|---|"]
     for r in ok:
         L.append(f"| {r['name']} | {fmt_ci(r['f1_l1'], r['ci_l1'])} | {fmt_ci(r['f1_l2'], r['ci_l2'])} | "
@@ -224,7 +226,7 @@ def main():
               "Seeds were not selected on the test set.", "",
               "| Config | Seeds | Level-1 macro-F1 | Level-2 macro-F1 | Avg-F1 |", "|---|---|---|---|---|"]
         for cfg, rs in sorted(groups.items()):
-            cell = lambda k: f"{np.mean([r[k] for r in rs]):.3f} ± {np.std([r[k] for r in rs]):.3f}" if len(rs) > 1 else f"{rs[0][k]:.3f} (n=1)"
+            cell = lambda k: f"{np.mean([r[k] for r in rs]):.3f} ± {np.std([r[k] for r in rs], ddof=1):.3f}" if len(rs) > 1 else f"{rs[0][k]:.3f} (n=1)"
             L.append(f"| {cfg} | {len(rs)} | {cell('f1_l1')} | {cell('f1_l2')} | {cell('avg')} |")
 
     sig = []
