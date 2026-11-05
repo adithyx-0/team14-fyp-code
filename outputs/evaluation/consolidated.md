@@ -7,6 +7,7 @@ Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed
 | Majority-class baseline (train mode: troll/person) | 0.4898 [0.479, 0.497] | 0.2338 [0.204, 0.260] | 0.3618 [0.346, 0.375] | 0% / 0% |
 | Arm 1 — Swin-Tiny + MuRIL (classical) | 0.5076 [0.422, 0.611] | 0.3940 [0.299, 0.490] | 0.4508 [0.386, 0.514] | 0% / 0% |
 | SYNAPSE replication — Qwen3-VL-2B LoRA (mlx) | 0.6564 [0.482, 0.870] | 0.3183 [0.243, 0.388] | 0.4874 [0.375, 0.602] | 0% / 0% |
+| Gemini 3.5 Flash-Lite zero-shot | 0.8947 [0.656, 1.000] | 0.6521 [0.541, 0.754] | 0.7734 [0.645, 0.850] | 0% / 0% |
 | arm2_vlm_benchmark/qwen3vl2b_cot | 0.4819 [0.468, 0.495] | 0.4289 [0.319, 0.528] | 0.4554 [0.399, 0.505] | 0% / 0% |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | 0.4872 [0.474, 0.497] | 0.4986 [0.384, 0.601] | 0.4929 [0.435, 0.544] | 0% / 0% |
 | arm3_peft_finetune/r16_s42 | 0.6299 [0.479, 0.831] | 0.2338 [0.204, 0.260] | 0.4318 [0.348, 0.536] | 0% / 0% |
@@ -18,7 +19,6 @@ Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed
 | arm3_peft_finetune/r4_s44 | 0.4898 [0.479, 0.497] | 0.2772 [0.221, 0.339] | 0.3835 [0.356, 0.415] | 0% / 0% |
 | arm3_peft_finetune/r8_s42 | 0.6094 [0.474, 0.795] | 0.3288 [0.252, 0.401] | 0.4691 [0.377, 0.565] | 0% / 0% |
 | *SYNAPSE paper (reported, not reproduced)* | 0.9200 (reported) | 0.4256 (reported) | 0.6728 (reported) | n/a |
-| Gemini 2.5 Flash zero-shot | not run (no file at `outputs/arm2_vlm_benchmark/gemini_zeroshot_predictions.csv`) | — | — | — |
 
 ## Arm 3 seed summary (mean ± std over seeds)
 
@@ -39,6 +39,7 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 |---|---|---|---|---|
 | Majority-class baseline (train mode: troll/person) | -0.0178 [-0.130, +0.073] | 0.873 | -0.1602 [-0.263, -0.060] | 0.003 |
 | SYNAPSE replication — Qwen3-VL-2B LoRA (mlx) | +0.1488 [-0.107, +0.428] | 0.467 | -0.0756 [-0.192, +0.038] | 0.187 |
+| Gemini 3.5 Flash-Lite zero-shot | +0.3871 [+0.194, +0.542] | 0.000 | +0.2582 [+0.146, +0.369] | 0.000 |
 | arm2_vlm_benchmark/qwen3vl2b_cot | -0.0257 [-0.137, +0.065] | 0.756 | +0.0349 [-0.106, +0.164] | 0.662 |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | -0.0204 [-0.131, +0.069] | 0.839 | +0.1046 [-0.028, +0.229] | 0.129 |
 | arm3_peft_finetune/r16_s42 | +0.1223 [-0.110, +0.392] | 0.497 | -0.1602 [-0.263, -0.060] | 0.003 |
@@ -57,6 +58,7 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 | Majority-class baseline (train mode: troll/person) | 0.980 | 0.000 | 0.701 | 0.000 | 0.000 |
 | Arm 1 — Swin-Tiny + MuRIL (classical) | 0.867 | 0.148 | 0.526 | 0.433 | 0.222 |
 | SYNAPSE replication — Qwen3-VL-2B LoRA (mlx) | 0.979 | 0.333 | 0.699 | 0.256 | 0.000 |
+| Gemini 3.5 Flash-Lite zero-shot | 0.989 | 0.800 | 0.842 | 0.714 | 0.400 |
 | arm2_vlm_benchmark/qwen3vl2b_cot | 0.964 | 0.000 | 0.633 | 0.320 | 0.333 |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | 0.974 | 0.000 | 0.649 | 0.433 | 0.414 |
 | arm3_peft_finetune/r16_s42 | 0.974 | 0.286 | 0.701 | 0.000 | 0.000 |
@@ -99,6 +101,16 @@ intersection recall: 33%
 | intersection | 15 | 0 | 0 | 0 |
 
 intersection recall: 0%
+
+**Gemini 3.5 Flash-Lite zero-shot**
+
+| gold \ pred | person | party | intersection | UNKNOWN |
+|---|---|---|---|---|
+| person | 48 | 3 | 3 | 0 |
+| party | 5 | 20 | 6 | 0 |
+| intersection | 7 | 2 | 6 | 0 |
+
+intersection recall: 40%
 
 **arm2_vlm_benchmark/qwen3vl2b_cot**
 

@@ -1,0 +1,10 @@
+{
+  "n_examples": 100,
+  "n_unknown": 0,
+  "gemini_zeroshot_f1_level1": 0.8947368421052632,
+  "gemini_zeroshot_f1_level2": 0.6521303258145363,
+  "arm1_test_f1_level1": 0.5076,
+  "arm1_test_f1_level2": 0.394,
+  "synapse_paper_test_f1_level2": 0.4256,
+  "synapse_replication_test_f1_level2": 0.3183
+}

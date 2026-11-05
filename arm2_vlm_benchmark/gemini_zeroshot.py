@@ -1,4 +1,4 @@
-"""Arm 2 — Gemini 2.5 Flash, zero-shot, on the primary Malayalam test set.
+"""Arm 2 — Gemini 3.5 Flash-Lite, zero-shot, on the primary Malayalam test set.
 
 Scope (per instructions.md Phase 3 / mid_review_status.html "must-do #1"):
 zero-shot only, no few-shot/CoT yet, on the same 100-image held-out test
@@ -38,7 +38,7 @@ from sklearn.metrics import f1_score
 DATA_ROOT = "data/primary/malayalam"
 TEST_OCR_CSV = os.path.join(DATA_ROOT, "test_ocr.csv")  # only level1/level2/image cols used
 OUT_DIR = "outputs/arm2_vlm_benchmark"
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.5-flash-lite"
 
 INSTRUCTION_PROMPT = (
     "Analyze the political intent and target of this Malayalam political meme.\n\n"
@@ -146,7 +146,7 @@ def main():
     with open(os.path.join(OUT_DIR, "gemini_zeroshot_results.json"), "w") as f:
         json.dump(results, f, indent=2)
 
-    print(f"\nGemini 2.5 Flash zero-shot: level1 macro-F1={f1_l1:.4f} level2 macro-F1={f1_l2:.4f}")
+    print(f"\nGemini 3.5 Flash-Lite zero-shot: level1 macro-F1={f1_l1:.4f} level2 macro-F1={f1_l2:.4f}")
     print(f"predictions -> {pred_csv_path}")
     print(f"results -> {os.path.join(OUT_DIR, 'gemini_zeroshot_results.json')}")
 

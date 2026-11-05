@@ -41,7 +41,7 @@ _NORM = {
 FIXED_SYSTEMS = [
     ("Arm 1 — Swin-Tiny + MuRIL (classical)", "outputs/arm1_classical/test_predictions.json"),
     ("SYNAPSE replication — Qwen3-VL-2B LoRA (mlx)", "../test fyp/outputs/predictions_malayalam.json"),
-    ("Gemini 2.5 Flash zero-shot", "outputs/arm2_vlm_benchmark/gemini_zeroshot_predictions.csv"),
+    ("Gemini 3.5 Flash-Lite zero-shot", "outputs/arm2_vlm_benchmark/gemini_zeroshot_predictions.csv"),
 ]
 REFERENCE_ROWS = [
     # reported in the SYNAPSE paper (Malayalam test) — not reproduced here
