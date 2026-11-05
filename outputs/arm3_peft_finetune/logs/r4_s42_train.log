@@ -1,0 +1,120 @@
+Loading base model from /Users/adithya/Final Year Project/test fyp/models/Qwen3-VL-2B-Instruct-MLX-8bit ...
+Loading dataset from data/malayalam_train_dataset ...
+Applying LoRA to ['q_proj', 'v_proj'] (rank=4, alpha=8.0, dropout=0.15) ...
+#trainable params: 0.802816 M || all params: 1720.574976 M || trainable%: 0.047%
+#trainable params: 0.802816 M || all params: 1720.574976 M || trainable%: 0.047%
+Training for 500 steps (effective batch = 8) ...
+[95mStarting training..., iterations: 500[0m
+[94mNo validation dataset provided — training will run without validation.[0m
+Iter 5: Train loss [92m5.45228195[0m, Learning Rate 5.000e-05, It/sec 0.238, Tokens/sec 56.727, Trained Tokens 1191, Peak mem 5.871 GB
+Iter 10: Train loss [92m5.34798546[0m, Learning Rate 5.000e-05, It/sec 0.248, Tokens/sec 64.895, Trained Tokens 2497, Peak mem 6.815 GB
+Iter 15: Train loss [92m5.40166168[0m, Learning Rate 5.000e-05, It/sec 0.419, Tokens/sec 98.652, Trained Tokens 3675, Peak mem 6.815 GB
+Iter 20: Train loss [92m5.08526955[0m, Learning Rate 5.000e-05, It/sec 0.348, Tokens/sec 80.781, Trained Tokens 4837, Peak mem 6.815 GB
+Iter 25: Train loss [92m5.26949997[0m, Learning Rate 5.000e-05, It/sec 0.334, Tokens/sec 84.591, Trained Tokens 6105, Peak mem 6.815 GB
+Iter 30: Train loss [92m4.66050682[0m, Learning Rate 5.000e-05, It/sec 0.359, Tokens/sec 86.839, Trained Tokens 7315, Peak mem 6.815 GB
+Iter 35: Train loss [92m4.48778763[0m, Learning Rate 5.000e-05, It/sec 0.358, Tokens/sec 90.033, Trained Tokens 8573, Peak mem 6.815 GB
+Iter 40: Train loss [92m4.36782684[0m, Learning Rate 5.000e-05, It/sec 0.298, Tokens/sec 74.130, Trained Tokens 9815, Peak mem 6.815 GB
+Iter 45: Train loss [92m3.84232407[0m, Learning Rate 5.000e-05, It/sec 0.334, Tokens/sec 81.734, Trained Tokens 11038, Peak mem 6.815 GB
+Iter 50: Train loss [92m3.67401352[0m, Learning Rate 5.000e-05, It/sec 0.331, Tokens/sec 82.123, Trained Tokens 12280, Peak mem 6.815 GB
+[94mIter 50: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000050_adapters.safetensors.[0m
+Iter 55: Train loss [92m3.28915863[0m, Learning Rate 5.000e-05, It/sec 0.392, Tokens/sec 93.715, Trained Tokens 13474, Peak mem 6.815 GB
+Iter 60: Train loss [92m3.02328110[0m, Learning Rate 5.000e-05, It/sec 0.412, Tokens/sec 98.022, Trained Tokens 14665, Peak mem 6.815 GB
+Iter 65: Train loss [92m2.93130245[0m, Learning Rate 5.000e-05, It/sec 0.377, Tokens/sec 95.724, Trained Tokens 15936, Peak mem 6.819 GB
+Iter 70: Train loss [92m2.60022449[0m, Learning Rate 5.000e-05, It/sec 0.414, Tokens/sec 101.472, Trained Tokens 17162, Peak mem 6.819 GB
+Iter 75: Train loss [92m2.42178421[0m, Learning Rate 5.000e-05, It/sec 0.352, Tokens/sec 92.048, Trained Tokens 18468, Peak mem 6.819 GB
+Iter 80: Train loss [92m2.19822464[0m, Learning Rate 5.000e-05, It/sec 0.256, Tokens/sec 66.774, Trained Tokens 19774, Peak mem 6.819 GB
+Iter 85: Train loss [92m1.85202770[0m, Learning Rate 5.000e-05, It/sec 0.310, Tokens/sec 79.092, Trained Tokens 21048, Peak mem 6.819 GB
+Iter 90: Train loss [92m1.85909710[0m, Learning Rate 5.000e-05, It/sec 0.364, Tokens/sec 87.859, Trained Tokens 22255, Peak mem 6.819 GB
+Iter 95: Train loss [92m1.62493210[0m, Learning Rate 5.000e-05, It/sec 0.280, Tokens/sec 70.356, Trained Tokens 23513, Peak mem 6.819 GB
+Iter 100: Train loss [92m1.39351273[0m, Learning Rate 5.000e-05, It/sec 0.299, Tokens/sec 78.195, Trained Tokens 24819, Peak mem 6.819 GB
+[94mIter 100: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000100_adapters.safetensors.[0m
+Iter 105: Train loss [92m1.34399471[0m, Learning Rate 5.000e-05, It/sec 0.310, Tokens/sec 85.945, Trained Tokens 26205, Peak mem 6.829 GB
+Iter 110: Train loss [92m1.12044163[0m, Learning Rate 5.000e-05, It/sec 0.335, Tokens/sec 86.371, Trained Tokens 27495, Peak mem 6.829 GB
+Iter 115: Train loss [92m1.08624668[0m, Learning Rate 5.000e-05, It/sec 0.346, Tokens/sec 89.250, Trained Tokens 28785, Peak mem 6.829 GB
+Iter 120: Train loss [92m0.90419397[0m, Learning Rate 5.000e-05, It/sec 0.313, Tokens/sec 81.881, Trained Tokens 30091, Peak mem 6.838 GB
+Iter 125: Train loss [92m0.79248877[0m, Learning Rate 5.000e-05, It/sec 0.367, Tokens/sec 97.094, Trained Tokens 31413, Peak mem 6.838 GB
+Iter 130: Train loss [92m0.72438860[0m, Learning Rate 5.000e-05, It/sec 0.326, Tokens/sec 80.988, Trained Tokens 32655, Peak mem 6.838 GB
+Iter 135: Train loss [92m0.56774254[0m, Learning Rate 5.000e-05, It/sec 0.420, Tokens/sec 100.177, Trained Tokens 33849, Peak mem 6.838 GB
+Iter 140: Train loss [92m0.55115814[0m, Learning Rate 5.000e-05, It/sec 0.303, Tokens/sec 76.164, Trained Tokens 35107, Peak mem 6.838 GB
+Iter 145: Train loss [92m0.59346781[0m, Learning Rate 5.000e-05, It/sec 0.342, Tokens/sec 90.354, Trained Tokens 36429, Peak mem 6.838 GB
+Iter 150: Train loss [92m0.60121279[0m, Learning Rate 5.000e-05, It/sec 0.357, Tokens/sec 90.876, Trained Tokens 37703, Peak mem 6.838 GB
+[94mIter 150: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000150_adapters.safetensors.[0m
+Iter 155: Train loss [92m0.23584960[0m, Learning Rate 5.000e-05, It/sec 0.349, Tokens/sec 90.157, Trained Tokens 38993, Peak mem 6.838 GB
+Iter 160: Train loss [92m0.34540863[0m, Learning Rate 5.000e-05, It/sec 0.312, Tokens/sec 89.352, Trained Tokens 40427, Peak mem 6.838 GB
+Iter 165: Train loss [92m0.30319703[0m, Learning Rate 5.000e-05, It/sec 0.399, Tokens/sec 102.888, Trained Tokens 41717, Peak mem 6.838 GB
+Iter 170: Train loss [92m0.26850295[0m, Learning Rate 5.000e-05, It/sec 0.406, Tokens/sec 104.784, Trained Tokens 43007, Peak mem 6.838 GB
+Iter 175: Train loss [92m0.44112234[0m, Learning Rate 5.000e-05, It/sec 0.418, Tokens/sec 103.749, Trained Tokens 44249, Peak mem 6.838 GB
+Iter 180: Train loss [92m0.26944115[0m, Learning Rate 5.000e-05, It/sec 0.491, Tokens/sec 112.495, Trained Tokens 45395, Peak mem 6.838 GB
+Iter 185: Train loss [92m0.55894499[0m, Learning Rate 5.000e-05, It/sec 0.352, Tokens/sec 90.755, Trained Tokens 46685, Peak mem 6.838 GB
+Iter 190: Train loss [92m0.13906507[0m, Learning Rate 5.000e-05, It/sec 0.168, Tokens/sec 44.494, Trained Tokens 48007, Peak mem 6.838 GB
+Iter 195: Train loss [92m0.10240693[0m, Learning Rate 5.000e-05, It/sec 0.352, Tokens/sec 80.629, Trained Tokens 49153, Peak mem 6.838 GB
+Iter 200: Train loss [92m0.19381857[0m, Learning Rate 5.000e-05, It/sec 0.295, Tokens/sec 72.061, Trained Tokens 50376, Peak mem 6.838 GB
+[94mIter 200: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000200_adapters.safetensors.[0m
+Iter 205: Train loss [92m0.09011582[0m, Learning Rate 5.000e-05, It/sec 0.373, Tokens/sec 90.262, Trained Tokens 51586, Peak mem 6.838 GB
+Iter 210: Train loss [92m0.10260379[0m, Learning Rate 5.000e-05, It/sec 0.459, Tokens/sec 122.728, Trained Tokens 52924, Peak mem 6.838 GB
+Iter 215: Train loss [92m0.26745908[0m, Learning Rate 5.000e-05, It/sec 0.677, Tokens/sec 168.229, Trained Tokens 54166, Peak mem 6.838 GB
+Iter 220: Train loss [92m0.36367581[0m, Learning Rate 5.000e-05, It/sec 0.771, Tokens/sec 191.082, Trained Tokens 55405, Peak mem 6.838 GB
+Iter 225: Train loss [92m0.07135318[0m, Learning Rate 5.000e-05, It/sec 0.664, Tokens/sec 177.762, Trained Tokens 56743, Peak mem 6.838 GB
+Iter 230: Train loss [92m0.08808354[0m, Learning Rate 5.000e-05, It/sec 0.685, Tokens/sec 176.654, Trained Tokens 58033, Peak mem 6.838 GB
+Iter 235: Train loss [92m0.31042590[0m, Learning Rate 5.000e-05, It/sec 0.780, Tokens/sec 195.761, Trained Tokens 59288, Peak mem 6.838 GB
+Iter 240: Train loss [92m0.06768086[0m, Learning Rate 5.000e-05, It/sec 0.712, Tokens/sec 185.989, Trained Tokens 60594, Peak mem 6.838 GB
+Iter 245: Train loss [92m0.05844815[0m, Learning Rate 5.000e-05, It/sec 0.735, Tokens/sec 184.834, Trained Tokens 61852, Peak mem 6.838 GB
+Iter 250: Train loss [92m0.30370438[0m, Learning Rate 5.000e-05, It/sec 0.824, Tokens/sec 209.383, Trained Tokens 63123, Peak mem 6.838 GB
+[94mIter 250: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000250_adapters.safetensors.[0m
+Iter 255: Train loss [92m0.05297629[0m, Learning Rate 5.000e-05, It/sec 0.703, Tokens/sec 185.919, Trained Tokens 64445, Peak mem 6.838 GB
+Iter 260: Train loss [92m0.05929598[0m, Learning Rate 5.000e-05, It/sec 0.774, Tokens/sec 194.743, Trained Tokens 65703, Peak mem 6.838 GB
+Iter 265: Train loss [92m0.14373033[0m, Learning Rate 5.000e-05, It/sec 0.802, Tokens/sec 193.678, Trained Tokens 66910, Peak mem 6.838 GB
+Iter 270: Train loss [92m0.13324343[0m, Learning Rate 5.000e-05, It/sec 0.753, Tokens/sec 179.437, Trained Tokens 68101, Peak mem 6.838 GB
+Iter 275: Train loss [92m0.03315157[0m, Learning Rate 5.000e-05, It/sec 0.743, Tokens/sec 189.428, Trained Tokens 69375, Peak mem 6.838 GB
+Iter 280: Train loss [92m0.04506909[0m, Learning Rate 5.000e-05, It/sec 0.692, Tokens/sec 180.762, Trained Tokens 70681, Peak mem 6.838 GB
+Iter 285: Train loss [92m0.08070406[0m, Learning Rate 5.000e-05, It/sec 0.664, Tokens/sec 162.746, Trained Tokens 71907, Peak mem 6.838 GB
+Iter 290: Train loss [92m0.03098702[0m, Learning Rate 5.000e-05, It/sec 0.581, Tokens/sec 151.802, Trained Tokens 73213, Peak mem 6.838 GB
+Iter 295: Train loss [92m0.15011462[0m, Learning Rate 5.000e-05, It/sec 0.368, Tokens/sec 96.198, Trained Tokens 74519, Peak mem 6.838 GB
+Iter 300: Train loss [92m0.14156518[0m, Learning Rate 5.000e-05, It/sec 0.379, Tokens/sec 94.244, Trained Tokens 75761, Peak mem 6.838 GB
+[94mIter 300: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000300_adapters.safetensors.[0m
+Iter 305: Train loss [92m0.19638529[0m, Learning Rate 5.000e-05, It/sec 0.393, Tokens/sec 97.629, Trained Tokens 77003, Peak mem 6.838 GB
+Iter 310: Train loss [92m0.04238704[0m, Learning Rate 5.000e-05, It/sec 0.385, Tokens/sec 100.475, Trained Tokens 78309, Peak mem 6.838 GB
+Iter 315: Train loss [92m0.10218112[0m, Learning Rate 5.000e-05, It/sec 0.343, Tokens/sec 86.360, Trained Tokens 79567, Peak mem 6.838 GB
+Iter 320: Train loss [92m0.16374171[0m, Learning Rate 5.000e-05, It/sec 0.346, Tokens/sec 91.573, Trained Tokens 80889, Peak mem 6.838 GB
+Iter 325: Train loss [92m0.06018007[0m, Learning Rate 5.000e-05, It/sec 0.354, Tokens/sec 93.500, Trained Tokens 82211, Peak mem 6.838 GB
+Iter 330: Train loss [92m0.09956632[0m, Learning Rate 5.000e-05, It/sec 0.345, Tokens/sec 91.276, Trained Tokens 83533, Peak mem 6.838 GB
+Iter 335: Train loss [92m0.26789577[0m, Learning Rate 5.000e-05, It/sec 0.401, Tokens/sec 95.386, Trained Tokens 84721, Peak mem 6.838 GB
+Iter 340: Train loss [92m0.06817824[0m, Learning Rate 5.000e-05, It/sec 0.357, Tokens/sec 89.813, Trained Tokens 85979, Peak mem 6.838 GB
+Iter 345: Train loss [92m0.05654925[0m, Learning Rate 5.000e-05, It/sec 0.332, Tokens/sec 87.670, Trained Tokens 87301, Peak mem 6.838 GB
+Iter 350: Train loss [92m0.03067008[0m, Learning Rate 5.000e-05, It/sec 0.415, Tokens/sec 104.327, Trained Tokens 88559, Peak mem 6.838 GB
+[94mIter 350: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000350_adapters.safetensors.[0m
+Iter 355: Train loss [92m0.01649331[0m, Learning Rate 5.000e-05, It/sec 0.408, Tokens/sec 101.304, Trained Tokens 89801, Peak mem 6.838 GB
+Iter 360: Train loss [92m0.06114288[0m, Learning Rate 5.000e-05, It/sec 0.312, Tokens/sec 83.370, Trained Tokens 91139, Peak mem 6.838 GB
+Iter 365: Train loss [92m0.17121497[0m, Learning Rate 5.000e-05, It/sec 0.418, Tokens/sec 103.926, Trained Tokens 92381, Peak mem 6.838 GB
+Iter 370: Train loss [92m0.16483510[0m, Learning Rate 5.000e-05, It/sec 0.339, Tokens/sec 92.890, Trained Tokens 93751, Peak mem 6.838 GB
+Iter 375: Train loss [92m0.03381128[0m, Learning Rate 5.000e-05, It/sec 0.383, Tokens/sec 97.654, Trained Tokens 95025, Peak mem 6.838 GB
+Iter 380: Train loss [92m0.09252677[0m, Learning Rate 5.000e-05, It/sec 0.339, Tokens/sec 90.671, Trained Tokens 96363, Peak mem 6.838 GB
+Iter 385: Train loss [92m0.05424523[0m, Learning Rate 5.000e-05, It/sec 0.393, Tokens/sec 91.267, Trained Tokens 97525, Peak mem 6.838 GB
+Iter 390: Train loss [92m0.08263098[0m, Learning Rate 5.000e-05, It/sec 0.380, Tokens/sec 102.947, Trained Tokens 98879, Peak mem 6.838 GB
+Iter 395: Train loss [92m0.22468383[0m, Learning Rate 5.000e-05, It/sec 0.432, Tokens/sec 110.109, Trained Tokens 100153, Peak mem 6.838 GB
+Iter 400: Train loss [92m0.06507522[0m, Learning Rate 5.000e-05, It/sec 0.330, Tokens/sec 89.267, Trained Tokens 101507, Peak mem 6.838 GB
+[94mIter 400: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000400_adapters.safetensors.[0m
+Iter 405: Train loss [92m0.07255225[0m, Learning Rate 5.000e-05, It/sec 0.464, Tokens/sec 110.764, Trained Tokens 102701, Peak mem 6.838 GB
+Iter 410: Train loss [92m0.10177438[0m, Learning Rate 5.000e-05, It/sec 0.409, Tokens/sec 97.305, Trained Tokens 103892, Peak mem 6.838 GB
+Iter 415: Train loss [92m0.03584518[0m, Learning Rate 5.000e-05, It/sec 0.429, Tokens/sec 102.529, Trained Tokens 105086, Peak mem 6.838 GB
+Iter 420: Train loss [92m0.04891668[0m, Learning Rate 5.000e-05, It/sec 0.332, Tokens/sec 88.795, Trained Tokens 106424, Peak mem 6.838 GB
+Iter 425: Train loss [92m0.09743556[0m, Learning Rate 5.000e-05, It/sec 0.388, Tokens/sec 97.618, Trained Tokens 107682, Peak mem 6.838 GB
+Iter 430: Train loss [92m0.18941681[0m, Learning Rate 5.000e-05, It/sec 0.392, Tokens/sec 105.855, Trained Tokens 109033, Peak mem 6.838 GB
+Iter 435: Train loss [92m0.14308168[0m, Learning Rate 5.000e-05, It/sec 0.368, Tokens/sec 99.544, Trained Tokens 110384, Peak mem 6.838 GB
+Iter 440: Train loss [92m0.13053691[0m, Learning Rate 5.000e-05, It/sec 0.410, Tokens/sec 103.244, Trained Tokens 111642, Peak mem 6.838 GB
+Iter 445: Train loss [92m0.09624271[0m, Learning Rate 5.000e-05, It/sec 0.386, Tokens/sec 101.965, Trained Tokens 112964, Peak mem 6.838 GB
+Iter 450: Train loss [92m0.07874401[0m, Learning Rate 5.000e-05, It/sec 0.391, Tokens/sec 95.993, Trained Tokens 114190, Peak mem 6.838 GB
+[94mIter 450: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000450_adapters.safetensors.[0m
+Iter 455: Train loss [92m0.08281441[0m, Learning Rate 5.000e-05, It/sec 0.390, Tokens/sec 99.291, Trained Tokens 115464, Peak mem 6.838 GB
+Iter 460: Train loss [92m0.18072259[0m, Learning Rate 5.000e-05, It/sec 0.416, Tokens/sec 104.294, Trained Tokens 116719, Peak mem 6.838 GB
+Iter 465: Train loss [92m0.12834918[0m, Learning Rate 5.000e-05, It/sec 0.411, Tokens/sec 104.843, Trained Tokens 117993, Peak mem 6.838 GB
+Iter 470: Train loss [92m0.19251028[0m, Learning Rate 5.000e-05, It/sec 0.347, Tokens/sec 89.352, Trained Tokens 119280, Peak mem 6.838 GB
+Iter 475: Train loss [92m0.10660429[0m, Learning Rate 5.000e-05, It/sec 0.345, Tokens/sec 94.429, Trained Tokens 120650, Peak mem 6.838 GB
+Iter 480: Train loss [92m0.11831923[0m, Learning Rate 5.000e-05, It/sec 0.399, Tokens/sec 92.386, Trained Tokens 121809, Peak mem 6.838 GB
+Iter 485: Train loss [92m0.13224281[0m, Learning Rate 5.000e-05, It/sec 0.408, Tokens/sec 102.534, Trained Tokens 123067, Peak mem 6.838 GB
+Iter 490: Train loss [92m0.11448197[0m, Learning Rate 5.000e-05, It/sec 0.385, Tokens/sec 101.621, Trained Tokens 124386, Peak mem 6.838 GB
+Iter 495: Train loss [92m0.09658066[0m, Learning Rate 5.000e-05, It/sec 0.395, Tokens/sec 95.310, Trained Tokens 125593, Peak mem 6.838 GB
+Iter 500: Train loss [92m0.10917587[0m, Learning Rate 5.000e-05, It/sec 0.325, Tokens/sec 83.876, Trained Tokens 126883, Peak mem 6.838 GB
+[94mIter 500: Saved adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors and /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/0000500_adapters.safetensors.[0m
+[92mSaved final adapter weights to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors.[0m
+Done. Adapter saved to /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/adapters/r4_s42/adapters.safetensors

@@ -1,0 +1,7 @@
+\section{Reproducibility and project structure}
+
+All code is in the project repository, organised as \texttt{data/}, \texttt{arm1\_classical/}, \texttt{arm2\_vlm\_benchmark/}, \texttt{arm3\_peft\_finetune/}, \texttt{explainability/}, \texttt{evaluation/}, \texttt{demo/} and \texttt{website/}. Result files are in \texttt{outputs/}; \texttt{DEVIATIONS.md} lists every hardware-driven change. The single command \texttt{python -m evaluation.aggregate} regenerates all tables in Chapter~4.
+
+\section{Notes on comparability with SYNAPSE}
+
+See Section~\ref{sec:paper-gap}. Items we verified locally: the 100-image test ids and labels match across all arms; the test set has 96 troll and 4 support images; the training set has 477 troll and 23 support images. Items we did not verify: the paper's test-split size and class counts, and whether its 0.92 Level-1 score was obtained on this same split.

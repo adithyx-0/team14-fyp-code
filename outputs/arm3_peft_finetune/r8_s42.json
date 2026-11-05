@@ -1,0 +1,802 @@
+[
+  {
+    "image": "data/resized_512/malayalam_test_dataset/2.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "SUPPORT",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/14.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/15.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/21.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/22.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/28.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/35.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/41.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/53.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "SUPPORT",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/59.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/63.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/65.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/72.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/81.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/88.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/92.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "SUPPORT",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/100.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/103.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/106.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/107.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/122.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/129.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/131.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/135.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/139.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/157.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/161.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/162.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/167.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/188.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/190.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/192.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/201.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/202.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/206.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/215.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/217.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/231.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/242.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/244.jpg",
+    "raw_output": "INTENT: SUPPORT\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "SUPPORT",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/252.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/253.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/261.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/268.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/270.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/271.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/274.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/277.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/289.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/296.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/309.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/314.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/316.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/328.jpg",
+    "raw_output": "INTENT: SUPPORT\nTARGET: PARTY",
+    "gold_level1": "SUPPORT",
+    "gold_level2": "PERSON",
+    "pred_level1": "SUPPORT",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/331.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/338.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/340.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/344.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/346.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/367.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/373.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/379.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/380.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/386.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/388.jpg",
+    "raw_output": "INTENT: SUPPORT\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "SUPPORT",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/390.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/392.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/402.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/414.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/419.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/428.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/436.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/455.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/456.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/459.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/460.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/462.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/467.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/472.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/475.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/476.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/477.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/485.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/490.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/492.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/493.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/499.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/505.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/506.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/509.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/511.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/521.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/525.jpg",
+    "raw_output": "INTENT: SUPPORT\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "SUPPORT",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/559.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/561.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/563.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "BOTH",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/584.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/586.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PARTY",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PARTY"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/595.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  },
+  {
+    "image": "data/resized_512/malayalam_test_dataset/598.jpg",
+    "raw_output": "INTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "CRITICISE",
+    "gold_level2": "PERSON",
+    "pred_level1": "CRITICISE",
+    "pred_level2": "PERSON"
+  }
+]

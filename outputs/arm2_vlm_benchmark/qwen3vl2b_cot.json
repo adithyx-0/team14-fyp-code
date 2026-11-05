@@ -1,0 +1,802 @@
+[
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/2.jpg",
+    "raw_output": "The meme shows a political figure, likely a leader, being greeted by others in a formal setting. The tone is mocking, as the text is a sarcastic, exaggerated version of a political statement, implying the leader is being treated as a \"demon\" or \"monster\" by the public. The meme is clearly mocking the leader's image or actions, not praising them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "support",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/14.jpg",
+    "raw_output": "The meme features a man in a white shirt and orange scarf, holding a face mask. The text is in Malayalam, and the date is 21.05.2025. The tone of the image is critical, as the text is a sarcastic and mocking statement about the man's political actions. The subject is a political figure, and the meme is targeting his party.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/15.jpg",
+    "raw_output": "The meme features a Malayalam actor, likely a prominent figure in the film industry, in a series of images with text that appears to be a political commentary. The images show the actor in various expressions, with one image showing a police badge and another with a \"MIZORAN 98.2%\" graphic, which is likely a reference to a political or social issue. The text includes phrases like \"Sar. Ve aar dhaat\" (Sar, you are a fool) and \"Mizoran 98.2%\" which are likely meant to be humorous\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/21.jpg",
+    "raw_output": "The meme features a man in a black tank top, with a look of intense emotion, and a man in a blue patterned garment, both in a forest setting. The man in the black tank top is shown with a look of despair or anguish, while the man in the blue garment is shown with a look of calm or contemplation. The meme is a political satire that uses the contrast between the two men to convey a message. The tone of the meme is mocking, as it uses the contrast between the two men to highlight a perceived disconnect or contradiction in the political figure. The target of\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/22.jpg",
+    "raw_output": "The meme features a man in a white shirt with a red tilak on his forehead, likely a political figure. The text is in Malayalam, and the phrase \"BE LIKE SURETTAN\" is a common expression in Malayalam political discourse, often used to mock or criticize a political figure. The image of the man is in the foreground, and the background shows a poster of a man, possibly a political leader. The meme is a political satire, using the phrase \"BE LIKE SURETTAN\" to mock the man in the foreground, implying he is a \"troll\"\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/28.jpg",
+    "raw_output": "The image shows a man with a beard and hands clasped in prayer, surrounded by people, including a police officer and a woman in a red sari. The text is in Malayalam, and the word \"விளையாடி\" (villaiyadhi) is visible at the bottom, which is a common term for a political figure in Kerala. The meme appears to be a satirical or critical portrayal of a political figure, likely a politician or party leader, using a religious or spiritual image to convey a message. The tone is mocking, as\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/35.jpg",
+    "raw_output": "The meme features two men, one with a white beard and glasses (P. Chidambaram) and the other with a shaved head (M. K. Alagiri). The text is in Malayalam, and the image is a political satire. The tone is mocking, as the man with the white beard is shown in a distorted, exaggerated form, and the text is a sarcastic commentary. The meme is targeting the political figures and their party, using a satirical image to criticize them.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/41.jpg",
+    "raw_output": "The meme features a grid of 12 individuals, likely political figures, with Malayalam text below each. The text appears to be a mix of names and titles, possibly indicating party affiliations or roles. The tone of the meme is critical, as it uses a series of images and text to highlight perceived flaws or issues associated with the individuals. The meme seems to be targeting a specific political figure or group, likely in a state or party context, and the overall intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/53.jpg",
+    "raw_output": "The meme features a man in a white kurta, standing against a textured, dark background. The text is in Malayalam, and the overall tone appears to be critical, as the man is depicted in a way that suggests he is a figure of ridicule or mockery. The meme is likely targeting a political figure or party, with the visual and textual elements working together to convey a negative or satirical message.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "support",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/59.jpg",
+    "raw_output": "The meme features a woman, likely a political figure, with a serious expression. The text is in Malayalam and uses a mix of formal and informal language, with a tone that appears to be critical. The use of the word \"வெளியே\" (outside) and the mention of \"2016\" suggest a reference to a past political event or campaign. The overall tone is mocking, implying that the subject is not a serious political figure but rather a figure who is not taking the political process seriously. The meme is targeting the subject and their party, suggesting\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/63.jpg",
+    "raw_output": "The meme shows a man wearing a white hat and a black mask, with a red scarf, and the text is in Malayalam. The tone is mocking, as the mask and the exaggerated expression suggest ridicule. The subject is a political figure, and the meme is likely targeting a specific political party or individual.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/65.jpg",
+    "raw_output": "The meme features two individuals, Porali Vasu and another woman, with Malayalam text that appears to be a political statement. The text is in a bold, stylized font and uses a red background, which is often associated with political messaging. The tone of the text is critical, as it uses strong, negative language to describe the individuals. The meme is targeting the political figures, specifically Porali Vasu, and is likely intended to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/72.jpg",
+    "raw_output": "The meme features a man, likely a political figure, with a serious expression. The text is in Malayalam, and the tone appears to be critical, using a mix of irony and exaggeration. The image is used to mock or criticize the person, suggesting they are a figure of concern or a target of criticism.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/81.jpg",
+    "raw_output": "The meme shows a woman in a black veil walking through a doorway, with a man in a white shirt looking at her. The man is smiling and appears to be in a positive mood. The text is in Malayalam, and the tone of the image and the man's expression suggest a positive or approving sentiment. The subject is a woman in a black veil, and the man is smiling at her. The meme seems to be praising the woman, possibly in a positive or supportive way. The meme is not mocking or criticizing the woman or the man. The meme is not targeting a specific person or\n---\nINTENT: SUPPORT\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "support",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/88.jpg",
+    "raw_output": "The meme features a newspaper headline and a political cartoon, with three individuals wearing caps that appear to be symbolic of political parties. The cartoon depicts a figure in a dark, ominous setting, possibly representing a political figure or ideology. The tone of the meme is critical, as it uses a dramatic and possibly satirical image to convey a negative message about the subject. The meme is targeting a political figure and their party, using the visual of a dark figure to suggest a negative or threatening presence.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/92.jpg",
+    "raw_output": "The meme features a close-up of a man with a beard and a microphone, likely a political figure, with a black-and-white image of another man in the background. The text is in Malayalam, and the tone is critical, as indicated by the use of the word \"अनिवार्य\" (unavoidable) and the phrase \"अनिवार्य अनिवार्य\" (unavoidable, unavoidable), which suggests a strong negative sentiment. The meme appears to be mocking or criticizing the subject, who is likely\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "support",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/100.jpg",
+    "raw_output": "The meme features a cartoon of a man in a white shirt and a green, white, and orange scarf, holding a brick and a pair of scissors, with a sign that reads \"30 HOMES COMING SOON.\" The man is smiling broadly, and the background shows a hillside with question marks, suggesting uncertainty. A newspaper titled \"PHOTO OF DONE HOMES PENDING\" is visible, and a sign says \"WAITING FOR INSTRUCTION SINCE 2024.\" The text at the top is in Malayalam, which is a language spoken in Kerala,\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/103.jpg",
+    "raw_output": "The meme features two individuals, a man and a woman, with a red flag and a political party logo (KSSCTU) in the background. The text is in Malayalam, and the tone is critical, as indicated by the use of emojis and the phrase \"kārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīkārīk\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/106.jpg",
+    "raw_output": "The meme features a Malayalam political figure, likely a politician, in a celebratory pose with a large, smiling emoji. The text is in Malayalam and appears to be a satirical or mocking commentary. The tone is critical, using exaggerated expressions and a humorous, exaggerated context to mock the subject. The target is the politician, and the intent is to criticize them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/107.jpg",
+    "raw_output": "The meme features a man in a pink shirt, likely a political figure, with a speech bubble containing a quote. The text in the speech bubble is in Malayalam and appears to be a quote from a political figure, possibly a critic or opponent. The tone of the meme is critical, as it uses a quote that seems to be a negative or mocking statement. The target is the man in the image, who is likely a political figure, and the meme is targeting him, possibly to criticize or mock his actions or statements.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/122.jpg",
+    "raw_output": "The meme features a man in a blue shirt and glasses, with a large image of a political figure in the background. The text is in Malayalam, and the prominent yellow text at the bottom is a name, likely a political figure. The tone of the text is critical, using strong negative language and a mocking style. The meme appears to be targeting a specific political figure, likely a leader or candidate, with a critical message.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/129.jpg",
+    "raw_output": "The meme features a man in a blue shirt standing in front of a large screen showing a portrait of a prominent political figure, likely a leader. The text is in Malayalam and uses a humorous, exaggerated format with a star and a caption that appears to be a sarcastic or mocking statement. The tone is clearly critical, using a playful, exaggerated format to mock the subject. The subject is a political figure, and the meme is targeting them with a sarcastic tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/131.jpg",
+    "raw_output": "The meme features a man speaking at a political event, likely a politician, with a woman in a distressed pose below. The text is in Malayalam, and the image is a political meme. The tone is critical, as indicated by the emoji of a person with a confused or skeptical expression. The meme is mocking the politician, suggesting that the politician is not being taken seriously or is not a credible figure. The target is the politician, and the intent is to criticize them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/135.jpg",
+    "raw_output": "The meme shows a man in a suit and a woman in a dark dress, with a child in a school uniform walking behind them. The text is in Malayalam and appears to be a political commentary. The tone is critical, as it uses a cartoonish emoji and a sarcastic question to mock the subject. The subject is a man in a suit, and the meme is targeting him, implying he is a political figure.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/139.jpg",
+    "raw_output": "The meme shows a man in a red shirt on the right and a person in a yellow shirt with a purple umbrella on the left. The text is in Malayalam, and the tone is critical, as indicated by the sad emoji and the text's accusatory phrasing. The subject is a person, and the meme appears to be a critique of their actions or statements.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/157.jpg",
+    "raw_output": "The meme features a man in a military-style uniform with a hammer and sickle, a symbol of communism, and a syringe with pills, suggesting a connection to drug use or a political figure associated with such imagery. The text is in Malayalam and appears to be a political statement, likely targeting a specific political figure or party. The tone is critical, as it uses the imagery of a syringe and pills to imply a negative association with the subject, possibly mocking their actions or policies. The meme is targeting a political figure, likely a politician or party, and the intent is to criticize them\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/161.jpg",
+    "raw_output": "The meme features a man in a red beret with a hammer and sickle symbol, a common emblem of the Communist Party of India. The text on the left is in Malayalam and appears to be a critical or mocking statement about the man, likely a political figure. The tone is clearly negative, suggesting criticism or mockery. The subject is a person, specifically a political figure, and the meme is targeting him with a critical message.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/162.jpg",
+    "raw_output": "The meme features a Malayalam political figure, likely a prominent politician, in a context of a political campaign or public statement. The top image shows a poster with the figure, and the bottom images show a man reacting with a mix of surprise and disbelief. The text \"Close enough\" and \"eek...!!\" suggests a mocking tone, implying the figure's actions or statements are not as significant or impactful as they might be. The meme is clearly mocking the figure, not praising them. The target is the political figure, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/167.jpg",
+    "raw_output": "The meme features a man in a red beret and glasses, with a political symbol on the beret, and a smaller image of a man in a similar pose. The text is in Malayalam, and the tone is critical, using phrases like \"kappu\" (a derogatory term) and \"kappu\" (a mocking term) to suggest a negative portrayal. The meme is targeting a political figure, likely a leader or prominent figure in a political party, and the overall intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/188.jpg",
+    "raw_output": "The meme features a collage of images and text, with the central figure being a man in a white shirt and a mustache, who appears to be a public figure. The text is in Malayalam and uses exaggerated expressions and dramatic formatting to convey a strong emotional tone. The tone is mocking and critical, as indicated by the use of the word \"troll\" and the exaggerated facial expressions. The subject is a specific individual, not a party, and the meme is clearly targeting this person with a critical and humorous intent.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/190.jpg",
+    "raw_output": "The meme features a political figure, Madhyamam, and a political party, Thalli Sangh. The image shows a man with a mustache and a smiling man, both looking up with a happy expression. The text is in Malayalam, and the hashtag #suri is used, which is a common term in Malayalam for a political figure. The tone of the meme is mocking, as it uses a popular image of a man with a mustache and a smiling man to represent the political figure. The meme is mocking the political figure and the party, and it is not praising\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/192.jpg",
+    "raw_output": "The meme features a woman and a man in a scene from a Malayalam film, with the woman appearing distressed and the man looking on. The text is in Malayalam, and the tone is critical, as the woman is asking a question that seems to be a sarcastic or mocking inquiry about the man's actions or beliefs. The meme is targeting the man, who is portrayed as a figure of authority or a political figure, and the tone is mocking, suggesting he is not a serious or responsible figure. The meme is not praising or supporting the man or his party, but rather criticizing him.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/201.jpg",
+    "raw_output": "The meme features a Malayalam-speaking man in a plaid shirt, with a yellow dot on his forehead, in a scene that appears to be a political satire. The image includes a picture of a political figure (likely a leader) and a logo for a political party, \"Tamil Sangh.\" The text is in Malayalam, and the meme uses a visual and textual combination to mock the political figure and the party. The tone is critical, as it uses a satirical image of a man with a yellow dot on his forehead, which is a common symbol of a political figure, to\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/202.jpg",
+    "raw_output": "The meme features a political figure (Narendra Modi) and a woman, likely a political figure, with a background of political figures. The text is in Malayalam, and the meme uses a visual of a political figure with a background of political figures. The meme is a political meme that uses a visual of a political figure with a background of political figures. The meme is a political meme that uses a visual of a political figure with a background of political figures. The meme is a political meme that uses a visual of a political figure with a background of political figures. The meme is a political meme\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/206.jpg",
+    "raw_output": "The meme features a photograph of a man in a formal setting, with a shield logo that includes a cartoon figure and the text \"TROLL SANGH\". The text at the top is in Malayalam, and the bottom text is also in Malayalam. The meme is a political satire that uses a visual of a man in a formal setting, possibly a politician, and a cartoon figure in a shield. The tone of the meme is mocking and critical, as it uses a cartoon figure to represent a political group. The target of the meme is the political group, the \"TROLL SANG\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/215.jpg",
+    "raw_output": "The meme shows a Malayalam political figure, likely a politician, with a shocked expression. The image is a parody of a political advertisement, with a company logo and a phone number that appears to be a fake or misleading number. The meme uses the figure's shocked expression to mock the political campaign, implying that the campaign is absurd or poorly run. The tone is critical, mocking the political campaign and the person involved. The target is the politician and the political party they represent.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/217.jpg",
+    "raw_output": "The meme features a Malayalam political figure, likely a politician, with a prominent logo for the \"Troll Sangh\" (a political party). The image is a parody, using a well-known character from a Malayalam film to mock the politician. The tone is clearly critical, as indicated by the exaggerated facial expression and the \"Troll Sangh\" logo, which is a satirical political group. The meme is mocking the politician and their party, not praising them.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/231.jpg",
+    "raw_output": "The meme features a man in two different expressions, with the text in Malayalam. The left image shows a smiling man, and the right image shows a man with a serious expression. The text in the image is in Malayalam, and the meme is likely a political satire. The tone of the meme is mocking, as it uses a contrast between the two expressions to highlight a perceived contradiction or hypocrisy. The subject is a person, likely a politician, and the meme is targeting their image or actions.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/242.jpg",
+    "raw_output": "The meme features a man in a checkered shirt, likely a public figure, with a serious expression. The text is in Malayalam, and the phrase \"TROLL SANGH\" is visible, indicating a political context. The tone is mocking, as the man is depicted with a mustache and glasses, and the text is a sarcastic, exaggerated statement. The meme is clearly mocking the subject, likely a political figure, and is not praising them. The target is the person, and the political intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/244.jpg",
+    "raw_output": "The meme features a woman with a handprint of the Indian flag on her cheek, a common symbol of Indian patriotism. The text is in Malayalam, a language spoken in Kerala, India. The image is likely a political satire or meme, using the flag and the woman's expression to convey a message. The tone appears to be mocking or criticizing the subject, as the text is in Malayalam and the image is a common political symbol. The subject is a person, likely a public figure, and the meme is targeting their political stance or actions.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/252.jpg",
+    "raw_output": "The meme features two men, one in an orange shirt and the other in a green shirt, both smiling and posing in front of a hay bale background. The text is in Malayalam, and the meme is presented in a split-screen format with hashtags and a logo. The tone appears to be mocking or ridiculing the man in the orange shirt, who is likely a political figure, as the text is in a sarcastic or critical tone. The meme is targeting the man in the orange shirt, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/253.jpg",
+    "raw_output": "The meme features a woman in two different contexts: one as a speaker at a rally, and the other as a woman in a public setting. The top image shows her with a raised fist and a passionate expression, suggesting she is a political figure. The bottom image shows her with a more subdued expression, possibly in a public or official setting. The meme uses a cartoon character, \"Troll Sanch,\" which is a satirical figure, to mock her. The text in the meme is in Malayalam, and the tone is critical, suggesting that the subject is being mocked or criticized. The\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/261.jpg",
+    "raw_output": "The meme shows a crowded street scene with people on motorcycles and a police officer, likely in a city like Kochi, with a large crowd gathered. The text is in Malayalam, and the image is a screenshot of a video, possibly from a news report or social media post. The meme uses a visual of a chaotic street scene to highlight a political issue, possibly related to traffic or public safety. The tone is critical, as it uses the image of a crowded, possibly dangerous street to suggest that the subject is a problem or a threat to public order. The subject is a political figure or\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/268.jpg",
+    "raw_output": "The meme shows a woman and a man at a political rally, with the woman speaking at a podium. The text is in Malayalam, and the tone appears to be critical, as the woman is shown speaking with a serious expression, and the man is looking at her with a serious expression. The meme seems to be mocking the woman's speech or the man's presence at the rally. The target is the woman and the man, who are likely political figures. The meme is critical of the woman's speech and the man's presence.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/270.jpg",
+    "raw_output": "The meme features a political figure, likely a prominent leader, with a quote from a document that appears to be a government statement. The image is a political meme, which is a form of satire or humor used to convey a message. The meme uses a popular Malayalam political figure, who is a well-known public figure in Kerala, to make a point. The tone of the meme is mocking, as it uses the figure's image and the quote to create a humorous or ironic effect. The meme is targeting the political figure and their party, as it is a political satire.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/271.jpg",
+    "raw_output": "The meme features a man in a white shirt, likely a political figure, in a scene with other men. The text is in Malayalam, and the image includes a logo for \"Tamil Sanch\" (a political party). The man is shown with a raised hand and a look of surprise or exasperation, with the text \"G\" and \"G\" in the image. The meme uses a humorous, exaggerated tone to depict a situation where the man is being criticized or mocked. The tone is mocking, and the subject is the man in the white shirt, who is likely a\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/274.jpg",
+    "raw_output": "The meme features a man in a white shirt and a white cap, with a mustache, and the text is in Malayalam. The text is a sarcastic, mocking phrase that uses a religious term to describe the man, implying he is a \"religious\" figure. The tone is clearly mocking and critical, not supportive. The subject is a person, specifically a political figure, and the meme is targeting him with a humorous, critical tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/277.jpg",
+    "raw_output": "The meme shows a police officer and several men in a public setting, with the officer gesturing and speaking to the group. The tone is mocking, as indicated by the exaggerated expressions and the use of the word \"kappu\" (a common Malayalam term for a person who is being mocked or ridiculed). The subject is a police officer, and the meme is critical of him, suggesting he is being portrayed as incompetent or unprofessional.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/289.jpg",
+    "raw_output": "The meme features a man in a police uniform, likely a politician, in a crowd. The text is in Malayalam, and the tone is critical, as indicated by the phrase \"நீங்கள் நிகழ்ச்சி கொடுக்கிறீர்கள்\" (You are giving up the game) and the exclamation \"உயிரைக் கொடுக்கிறீர்கள்!\" (You are\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/296.jpg",
+    "raw_output": "The meme features two men in a scene that appears to be from a film, with one giving a thumbs-up. The image is a political meme, likely referencing a political figure or party. The tone is mocking, as the second image shows a person lying on a rock, and the third shows a man with a serious expression. The meme uses humor to critique or mock the subject, which is likely a political figure or party. The meme is critical of the subject, using satire to highlight perceived flaws or absurdities.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/309.jpg",
+    "raw_output": "The meme features a political poster with Malayalam text and a photo of a man in a white shirt and sunglasses, with a smaller image of a man in a red flag. The poster is from a political party, and the text is in Malayalam. The meme uses a photo of a man in a white shirt and sunglasses, with a smaller image of a man in a red flag. The meme uses a photo of a man in a white shirt and sunglasses, with a smaller image of a man in a red flag. The meme uses a photo of a man in a white shirt and sunglasses,\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/314.jpg",
+    "raw_output": "The meme features a central image of a man, likely a political figure, with a large, cartoonish emoji of a smiling yellow face with a red heart. The text is in Malayalam and appears to be a political commentary. The tone is critical, as indicated by the use of the word \"CRITICISE\" and the mocking nature of the text, which includes a sarcastic comparison of the subject's political career. The subject is a specific person, likely a politician, and the meme is targeting them with a critical tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/316.jpg",
+    "raw_output": "The meme shows a man in a close-up, with a blurry image of a person in a vehicle in the background. The man in the close-up is a political figure, and the background image is a blurred, possibly symbolic, depiction of a vehicle. The tone of the meme is critical, as it uses a distorted image to suggest the man is involved in a serious or negative event, likely related to a political incident. The meme is mocking the man's political actions or statements, implying they are irresponsible or problematic.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/328.jpg",
+    "raw_output": "The meme features two men, one seated and one standing, in front of a red flag with a hammer and sickle. The seated man is smiling broadly, while the standing man looks serious. The text is in Malayalam, and the image is designed to be humorous and critical. The meme is clearly mocking the political figure and the party associated with the flag. The tone is satirical and critical, not supportive. The target is the political figure and the party jointly.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "support",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/331.jpg",
+    "raw_output": "The meme shows a man holding a Harpic toilet cleaner bottle, with a political chart in the background. The chart highlights the CPI(M) as having a 0.01% vote share, which is circled and emphasized. The man's expression and the text below him appear to be mocking the CPI(M)'s low vote share. The meme is targeting the CPI(M) party, using the toilet cleaner as a satirical symbol to mock its political performance. The tone is critical, mocking the party's poor performance.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/338.jpg",
+    "raw_output": "The meme features a man, likely a public figure, with a shirtless torso and a serious expression, and the text \"பிரிவும்\" (which means \"I am not a party\") is visible. The image is accompanied by a list of names and numbers, possibly representing a political or social issue. The tone of the meme is critical, as it uses the man's appearance and the text to suggest a lack of support or a negative stance towards the subject. The meme is targeting a specific individual, likely a political figure, and the tone is mocking.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/340.jpg",
+    "raw_output": "The meme features a woman in a traditional sari, likely a political figure, in a scene that appears to be from a Malayalam film or show. The text is in Malayalam and uses a mix of direct and indirect language to convey a message. The tone is critical, as the woman is shown with a skeptical or dismissive expression, and the text uses phrases like \"SFI\" (which could be a play on \"SFI\" as in \"SFI\" or \"SFI\" as in \"SFI\" or \"SFI\" as in \"SFI\" or \"\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/344.jpg",
+    "raw_output": "The meme features a person with a mustache and a colorful sari, likely a public figure in Kerala. The text is in Malayalam, and the image is accompanied by a cartoon of a political party logo. The tone is critical, as the text uses a sarcastic and mocking tone, implying the person is a \"bogus\" or \"fake\" politician. The meme is targeting the person and their party, suggesting they are not genuine or are part of a corrupt political machine.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/346.jpg",
+    "raw_output": "The meme shows a man in a yellow shirt and tie, with a brick wall background. He is depicted in three stages: looking at a phone, covering his face, and adjusting his tie. The text shows projected years and numbers, suggesting a timeline of events. The tone is mocking, as the man's actions and the numbers seem to imply a decline or failure in a political context. The meme is mocking the subject, likely a political figure or party, by showing a decline in their performance or influence over time.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/367.jpg",
+    "raw_output": "The meme shows a silhouette of a person pointing at a starry sky, with a small figure flying above, and a cartoon of a group of people in the bottom left corner. The text is in Malayalam, and the image is a political meme. The tone is mocking, as the person is depicted as a small figure in the sky, while the cartoon group is shown as a larger, more powerful entity. The meme is likely targeting a political figure or party, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/373.jpg",
+    "raw_output": "The meme features two men, one in a pink shirt and the other in a purple shirt, standing side by side. The text is in Malayalam, and the tone is clearly mocking, as indicated by the large smiley face and the exaggerated, sarcastic phrasing. The subject is a political figure, and the meme is critical of them, using a humorous, exaggerated format to convey a negative opinion.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/379.jpg",
+    "raw_output": "The meme features a man in a white shirt and tie, seemingly flying, with a caption that reads \"Giveesh Thala\" and \"u missed that kuntham.\" The image is a parody of a political figure, likely a politician, and the tone is mocking. The meme is a satirical take on the political figure, using the image of a man flying to suggest a sense of power or influence, while the text \"u missed that kuntham\" implies a criticism of the person's actions or statements. The meme is mocking the political figure, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/380.jpg",
+    "raw_output": "The meme features a man in a green shirt, likely a political figure, with a caption that includes a name and a hashtag. The hashtag \"#வெள்ளைஜூ\" (which translates to \"Vellai Joo\") is a common political term in Malayalam, often used to refer to a specific political party or leader. The tone of the meme is mocking, as it uses a dramatic and exaggerated image of the man with a distorted face and a sarcastic caption. The meme is targeting the political figure and the party they represent, using satire to criticize or\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/386.jpg",
+    "raw_output": "The meme features a man in a white shirt, likely a political figure, speaking with a serious expression. The text below him is in Malayalam, which is a language spoken in Kerala, India. The text appears to be a sarcastic or critical comment, using a fictional or exaggerated scenario to mock the person's political stance or actions. The tone is mocking, and the subject is a political figure, likely a politician, who is being criticized for a specific policy or action.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/388.jpg",
+    "raw_output": "The meme features two men, one with a serious expression and one smiling, alongside a logo of the Indian National Congress (INC) with a hand symbol. The text is in Malayalam, and the tone is critical, as the phrase \"bōrāy\" (a common term for a political figure) is used in a mocking way. The image is likely a political satire targeting a specific politician or party. The meme is critical of the subject, likely a politician or party, and the target is the politician and their party.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/390.jpg",
+    "raw_output": "The meme features two men, with the one in the foreground being the central figure. The text is in Malayalam, and the date is 30-06-2025, suggesting a recent political context. The tone is critical, as the text uses strong, negative language to describe the subject, implying a negative assessment of their actions or leadership. The subject is a person, and the meme appears to be targeting them directly, likely in a political context.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/392.jpg",
+    "raw_output": "The meme features a man and a woman, likely political figures, with a political poster in the background. The text is in Malayalam and appears to be a satirical or critical commentary. The tone is mocking, as indicated by the large laughing emoji and the exaggerated, sarcastic language. The subject is a person, specifically the man, and the meme is targeting him, likely in a critical or mocking way.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/402.jpg",
+    "raw_output": "The meme features two men, one on the left and one on the right, with a small image of a man in the center. The text is in Malayalam and appears to be a political commentary. The tone is critical, as it uses a mix of rhetorical questions and exaggerated claims to suggest the subject is not a serious political figure. The target is the person on the right, who is likely a political figure, and the meme is directed at him.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/414.jpg",
+    "raw_output": "The meme features a man in a red sari, likely a public figure, and two young men in a scene that appears to be a parody of a food-related event. The text is in Malayalam and includes a reference to \"AKG\" (a known political party in Kerala). The tone is mocking, as the image shows a humorous, exaggerated situation where the man in the red sari is being fed by the two young men, while the text suggests a critique of the party's actions or policies. The meme is targeting the political party AKG, using a satirical and humorous approach\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/419.jpg",
+    "raw_output": "The meme features a stylized image of a man, likely a public figure, with a skull and a laughing emoji. The text is in Malayalam, which is a language spoken in Kerala, India. The tone of the image and text is critical, as it uses a skull to represent death or danger and a laughing emoji to suggest mockery. The meme is targeting a specific political figure, likely a politician or political party, and the overall intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/428.jpg",
+    "raw_output": "The meme shows a man in a white shirt and a face mask, with a text box stating \"4,500 किरियाम\" (4,500 kiriyaam) and \"கர்நாட்கார் நாட்கள்\" (Karnataka Nadu). The image also shows a man in a uniform drinking from a cup, and another man in a plaid shirt. The meme is a collage of these images with text in Malayalam. The tone of the meme is mocking and\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/436.jpg",
+    "raw_output": "The meme features a man in a white shirt, likely a political figure, with Malayalam text that appears to be a political statement or slogan. The text is in Malayalam, and the tone is critical, as it uses a strong, negative phrase \"kārākārākārākārākārākārākārākārākārākārākārākārākārākārākārākārākārāk\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/455.jpg",
+    "raw_output": "The meme features a man in a striped polo shirt holding a bag of what appears to be food, with text indicating a price of 2100 Kerala rupees. The man is smiling and appears to be in a positive mood. The second panel shows a man with a more serious expression, and the text below him is a sarcastic statement. The meme uses the contrast between the two men to highlight a perceived disconnect or irony in the situation. The tone is mocking, and the subject is the man in the striped shirt, who is portrayed as being in a positive, possibly self-serving,\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/456.jpg",
+    "raw_output": "The meme features a man in a white shirt on a phone call, with a woman on the other end. The text is in Malayalam, and the meme is a common form of political satire. The tone is mocking, as the man appears to be in a serious or tense situation, while the woman seems to be on the phone with someone else. The meme is likely targeting a political figure or party, using the man's expression and the woman's reaction to convey a critical message. The meme is a form of political satire, and the target is a political figure or party.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/459.jpg",
+    "raw_output": "The meme features a Malayalam actor, likely a prominent figure in the film industry, in a scene from a movie. The text is in Malayalam and uses a common meme format with a character reacting to a situation. The tone is mocking, as indicated by the exaggerated expressions and the use of the word \"???\". The meme is a satire, not a direct political statement, and it is not targeting a specific political party or organization. The intent is to mock the actor's performance or the character's portrayal in the film.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/460.jpg",
+    "raw_output": "The meme features three individuals, likely political figures, in a layered, humorous format. The top panel shows a man with a serious expression, the middle panel shows a man with a beard and a smile, and the bottom panel shows two men in a conversation. The text is in Malayalam, a language spoken in Kerala, India. The tone of the meme is clearly mocking, as indicated by the exaggerated expressions and the use of a cartoonish emoji with a \"TR\" (likely for \"Troll\" or \"Trick\") symbol. The meme appears to be a satirical take on political\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/462.jpg",
+    "raw_output": "The meme features a man in a hat and bandana, with two other people also wearing similar accessories. The text is in Malayalam, and the image is a parody of a political figure. The tone is mocking, as the characters are exaggerated and the expressions are comical. The meme is targeting a political figure and their party, using satire to critique them.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/467.jpg",
+    "raw_output": "The meme shows a police officer holding a photo of a man with a visible tattoo, and the officer is reacting with a stern expression. The text is in Malayalam, and the tone is mocking. The subject is a police officer, and the meme is mocking the officer's reaction to the photo, implying he is being criticized for not being able to handle the situation. The meme is mocking the officer's reaction to the photo, implying he is being criticized for not being able to handle the situation.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/472.jpg",
+    "raw_output": "The meme features a man with a beard and a blue shirt, holding a red flag, with a blurred image of a person in the background. The text is in Malayalam, and the logo \"REPORTER\" is visible. The tone appears to be critical, as the text is written in a way that seems to be mocking or criticizing the subject. The subject is a person, and the meme is targeting them, likely in a political context.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/475.jpg",
+    "raw_output": "The meme features a man in a serious, contemplative expression, likely a political figure. The text is in Malayalam, and the tone appears to be critical, using a dramatic and intense visual style. The meme is targeting a political figure, with the intent to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/476.jpg",
+    "raw_output": "The meme features a man in a white shirt, likely a political figure, holding a wooden box. The image is accompanied by Malayalam text that appears to be a sarcastic or mocking statement, with a red underline emphasizing the word \"kappu\" (a term often used in political satire). The logo \"TELL SANGH\" suggests a political group, and the overall tone is critical. The meme is mocking the subject, likely a political figure, and is targeting the political party or organization associated with him.\n---\nINTENT: CRITICISE\nTARGET: BOTH",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "intersection"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/477.jpg",
+    "raw_output": "The meme shows a man dressed in a white bandage, with a flag and a red-orange symbol, in a pose that suggests a political figure. The tone is mocking, as the figure is depicted in a comical, exaggerated manner, and the text is in Malayalam, which is a language spoken in Kerala, India. The meme is likely targeting a political figure or party in Kerala, using humor to critique or mock them.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/485.jpg",
+    "raw_output": "The meme features a man in a striped shirt holding a pole, with a shield labeled \"TROLL SANGH\" in the second panel. The shield is a clear reference to the political party \"Troll Sangh,\" which is a fictional or satirical entity. The man's expression and the context of the meme suggest a mocking tone, implying that the party is a \"troll\" or a manipulative force. The meme is clearly mocking the party, not praising it. The target is the party \"Troll Sangh\" and its associated figure.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/490.jpg",
+    "raw_output": "The meme features a man in a light blue shirt, standing with arms outstretched, looking upwards. The text below him is in Malayalam, which appears to be a political commentary. The tone of the image and text is critical, as it uses a metaphorical or exaggerated portrayal to suggest the subject is being \"trolled\" or ridiculed. The subject is a person, and the meme is directed at them, not a party. Therefore, the meme is critical of the person, not a party.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/492.jpg",
+    "raw_output": "The meme shows a man with a blindfold, and the text is in Malayalam. The text is a question, \"Koottu kudhavu?\" which translates to \"Who is this?\" The tone is critical and mocking, as it questions the identity of the person, implying a lack of recognition or a lack of public support. The subject is a person, likely a political figure, and the meme is targeting them with a sarcastic or mocking tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/493.jpg",
+    "raw_output": "The image shows an elderly man holding a voter ID card and a document, likely a ballot or official paper. The text on the right is in Malayalam, which is a language spoken in Kerala, India. The text appears to be a political statement, possibly a protest or a call to action, and the tone seems to be critical or mocking. The meme is targeting a political figure or group, likely a political party or organization, and the intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/499.jpg",
+    "raw_output": "The meme features a Malayalam-speaking man in a black-and-white photo, with a smartphone displaying a chat interface. The text is in Malayalam, and the tone is critical, using phrases like \"I DON'T CARE\" and \"WHO CARES\" in a mocking way. The meme is targeting a political figure, likely a politician, and the overall intent is to criticize or mock them.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/505.jpg",
+    "raw_output": "The meme features a man in a thoughtful pose, with a list of legal provisions (ICP) on the right. The text on the left is in Malayalam and appears to be a political statement. The tone is critical, as the man's expression and the list of legal references suggest a critique of the subject. The subject is a political figure, and the meme is targeting a specific individual, likely a politician, with a critical tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/506.jpg",
+    "raw_output": "The meme features a man in a yellow tank top and a woman in a colorful dress, with the man holding a phone. The text is in Malayalam, and the man is shown in a confrontational pose, holding a phone to his ear. The woman is smiling and looking at him. The tone of the meme is mocking and critical, as it portrays the man in a negative light, possibly implying he is a bad or untrustworthy person. The meme is targeting the man, not a specific party, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/509.jpg",
+    "raw_output": "The meme features a man, likely a political figure, with a serious expression. The background shows a collage of text bubbles, some of which appear to be social media messages, suggesting a context of public discourse or controversy. The text in the bubbles is in Malayalam, and the overall tone of the image is critical, as indicated by the use of the word \"kavitha\" (a term often used in Malayalam political discourse to denote a negative or mocking tone). The meme is targeting the political figure, implying a critique of their actions or statements.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/511.jpg",
+    "raw_output": "The image shows a man in a plaid shirt with a serious expression, his hand near his face. The text is in Malayalam, and the publication is \"Reporter\" with a date of August 2, 2025. The title is \"விவாதமுடியாத காரணம்\" (No reason for debate), and the name \"வெங்கடாசு\" (Vengatascu) is prominently displayed. The meme is a political satire, using the man\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/521.jpg",
+    "raw_output": "The meme features two men, one with a beard and the other with a mustache, both in a political context. The text below them is in Malayalam and appears to be a political slogan or statement. The image of the group holding a banner with a picture of a political figure and the text \"CAA - FOR INIDA\" suggests a political campaign. The tone of the meme seems to be mocking or criticizing the political figures and their party, as indicated by the use of the word \"मामू\" (mamu), which is a common term of derision in Malay\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/525.jpg",
+    "raw_output": "The image shows three men, likely in a public setting, smiling and making peace signs. The text is in Malayalam, and the words \"kavu\" and \"kudhi\" are visible, which are likely part of a political slogan or phrase. The tone of the image is celebratory and positive, with the men appearing happy and united. The meme seems to be a form of political expression, possibly supporting a political figure or party. The image is not mocking or criticizing the subject.\n---\nINTENT: SUPPORT  \nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "support",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/559.jpg",
+    "raw_output": "The meme features a man, likely a political figure, with a serious expression. The text is in Malayalam, a language spoken in Kerala, India. The tone of the text is critical, using strong, negative language to describe the man's actions and beliefs. The meme appears to be a political critique, targeting the individual and their party.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/561.jpg",
+    "raw_output": "The meme features a man, likely a political figure, with a serious expression and a hand on his chin, suggesting contemplation or concern. The text is in Malayalam, and the tone appears to be critical, as it uses a strong, dramatic format with a question that seems to challenge the subject's position. The image is designed to provoke thought or reaction, likely to criticize or mock the individual's stance or actions. The meme is targeting the individual, not a party, and the tone is critical.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/563.jpg",
+    "raw_output": "The meme features a smiling man, identified as a political figure, with text in Malayalam. The text is a mix of praise and criticism, with phrases like \"PONGRESS\" and \"PONGRESS\" in a bold font, suggesting a political party. The tone is critical, as the text uses strong, negative language to describe the subject. The subject is a political figure, and the meme is targeting the party associated with him.\n---\nINTENT: CRITICISE\nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "intersection",
+    "pred_level1": "troll",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/584.jpg",
+    "raw_output": "The image shows a man in a white shirt holding a large, light-colored object, possibly a ball or a shell, with a serious expression. The text is in Malayalam, and the phrase \"विध विजय\" (Vidhi Vizhaya) is visible, which translates to \"Vidhi Victory\" or \"Vidhi's Victory.\" The tone of the image appears to be serious and focused on the man, suggesting a political context. The meme seems to be highlighting a political figure or party, with the man possibly representing a candidate or a political\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/586.jpg",
+    "raw_output": "The image shows a group of students holding a banner with Malayalam text that reads \"KSL\" and \"KSL KMO COLLEGE.\" The banner is being held by a group of students, and they are wearing blue scarves, which are often associated with political or student movements in India. The students are also holding a flag and a banner with the name of a college. The students are walking down a street, and there are buildings in the background. The students are wearing blue scarves, which are often associated with political or student movements in India. The students are also holding a\n---\nINTENT: SUPPORT  \nTARGET: PARTY",
+    "gold_level1": "troll",
+    "gold_level2": "party",
+    "pred_level1": "support",
+    "pred_level2": "party"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/595.jpg",
+    "raw_output": "The meme features a man, likely a political figure, holding a trophy and a laughing emoji. The text is in Malayalam, which is a language spoken in Kerala, India. The tone of the image is humorous and mocking, as indicated by the laughing emoji and the exaggerated expression of the man. The meme is clearly mocking the man, suggesting he is not serious or is being portrayed as a joke. The subject is a person, and the meme is targeting him with a humorous, critical tone.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  },
+  {
+    "image": "../test fyp/data/resized_512/malayalam_test_dataset/598.jpg",
+    "raw_output": "The image shows a man in traditional attire, likely a religious or political figure, stirring a large pot in a kitchen. The text is in Malayalam, and the meme uses a humorous, exaggerated image of a person in a kitchen setting to make a point. The tone is mocking, as it uses a mundane, almost absurd scene to highlight a political claim. The subject is a person, and the meme is mocking their political stance.\n---\nINTENT: CRITICISE\nTARGET: PERSON",
+    "gold_level1": "troll",
+    "gold_level2": "person",
+    "pred_level1": "troll",
+    "pred_level2": "person"
+  }
+]

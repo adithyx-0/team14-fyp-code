@@ -1,0 +1,69 @@
+\label{chap.2}
+
+\section{Existing System Study}
+\subsection{Review of existing Research work}
+
+\textbf{Multimodal meme classification.} Most published systems fuse frozen or fine-tuned image and text encoders. Sharma et al.\ \cite{sharma2024emotion} add emotion-enriched visual cues with gated cross-modal fusion for meme emotion detection and gain only 4.94 F1 points. Arya et al.\ \cite{arya2024clip} use CLIP with prompt engineering and a contrastive loss for hateful-meme detection. Wu et al.\ \cite{wu2024tcam} add a cross-mask attention module over frozen CLIP and BLIP captions and report an AUROC gain of about 0.01 over simple concatenation of the encoder outputs. Alzu'bi et al.\ \cite{alzubi2023offensive} and Saddozai et al.\ \cite{saddozai2025mmhs} use late and early fusion of CNN and transformer features. The recurring observation is that the pretrained encoders already carry most of the signal, and elaborate fusion adds little.
+
+\textbf{Dravidian-language hate and offence detection.} Work for Malayalam, Tamil and Kannada is almost entirely text-only. Sreelakshmi et al.\ \cite{sreelakshmi2024hasoc} combine multilingual embeddings (MuRIL with an SVM performing best) with cost-sensitive learning, and Roy et al.\ \cite{roy2022ensemble} use a weighted ensemble of mBERT, DistilBERT and XLM-RoBERTa. Neither uses the image. MISTRA \cite{jindal2024mistra} fuses text and image for misogyny detection but is evaluated on an English dataset.
+
+\textbf{Parameter-efficient fine-tuning.} LoRA \cite{hu2022lora} freezes the base weights and learns low-rank updates, and QLoRA \cite{dettmers2023qlora} does so on a quantised base. Surveys \cite{mao2025lora} and vision-language variants \cite{duan2025mobius} cover design choices. Alahmari et al.\ \cite{alahmari2024repeat} show that repeating an identical QLoRA run gives different results, which is a direct reason to report several seeds.
+
+\textbf{Explainability.} Grad-CAM \cite{selvaraju2020gradcam} produces class-discriminative heatmaps from gradients. Multimodal explainability reviews \cite{rodis2024mxai} and Hate-UDF \cite{lei2025hateudf} remain at the level of attribution maps or modality weights. Whether such a map is \emph{faithful} to the model can be tested by deleting or revealing the highlighted regions in saliency order (the deletion/insertion protocol of RISE \cite{petsiuk2018rise}).
+
+\textbf{Closest prior system.} SYNAPSE \cite{synapse2026} fine-tunes Qwen3-VL-2B with LoRA for this same shared task and reports, for Malayalam, Level-1 macro-F1 0.9200, Level-2 macro-F1 0.4256 and an average of 0.6728 (rank~5). We take these figures from our own replication notes, not from the paper, and we have not been able to confirm that the paper's test split equals ours (Section~\ref{sec:paper-gap}).
+
+\subsection{Review of Existing Tools/Products}
+
+Hosted multimodal assistants (for example Gemini) can classify a meme from a prompt alone but are closed, give no training control and no gradient access for heatmaps. Open VLMs (Qwen-VL family, LLaVA, PaliGemma) allow local inference and LoRA fine-tuning. Content-moderation tools for memes are generally English-first and output a binary hateful/not-hateful decision. We found no publicly available tool that classifies the stance of a Malayalam political meme and shows a checked explanation.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of closest related work with this project.}
+\label{tab:related}
+\small
+\begin{tabular}{p{3.0cm}p{1.9cm}p{2.0cm}p{2.3cm}p{2.0cm}p{1.6cm}}
+\toprule
+Work & Language & Task & Modality & Explanation checked & Fine-tuning \\
+\midrule
+Wu et al.\ \cite{wu2024tcam} & English & Hateful & Image+text & No & Fusion only \\
+Arya et al.\ \cite{arya2024clip} & English & Hateful & Image+text & No & Contrastive \\
+Sreelakshmi et al.\ \cite{sreelakshmi2024hasoc} & Dravidian & Hate/offence & Text only & No & None \\
+Jindal et al.\ \cite{jindal2024mistra} & English & Misogyny & Image+text & No & Fusion only \\
+SYNAPSE \cite{synapse2026} & Malayalam & Stance+target & Image (VLM) & No & LoRA \\
+\textbf{This work} & Malayalam & Stance+target & Image(+OCR text) & \textbf{Yes (deletion/insertion)} & Compared with prompting \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Research Gap/ Scope for improvement and innovation}
+
+From the survey we draw the following gaps.
+
+\begin{enumerate}
+    \item \textbf{Gaps addressed in Phase I}
+    \begin{itemize}
+        \item \emph{No controlled comparison of prompting and fine-tuning on one backbone for a Dravidian meme task.} We run both on Qwen3-VL-2B, on one split, with one metric.
+        \item \emph{Small-data results are reported without uncertainty.} We add bootstrap confidence intervals, multi-seed variance and paired tests.
+        \item \emph{Explanation faithfulness is rarely tested.} We test Grad-CAM with deletion/insertion against a random-order control.
+    \end{itemize}
+    \item \textbf{Gaps planned for Phase II}
+    \begin{itemize}
+        \item Faithful natural-language rationales and a cross-modal faithfulness score.
+        \item Cross-lingual (Tamil/Malayalam) transfer on a second dataset.
+        \item 7B-scale models and few-shot prompting on an A100.
+    \end{itemize}
+\end{enumerate}
+
+\section{Problem Statement and Contributions}
+
+\begin{enumerate}
+    \item \textbf{Problem Statement:} Given a Malayalam political meme, predict its stance (troll or support) and its target (person, party, or both) under severe class imbalance and a very small test set, and determine whether fine-tuning a vision-language model is justified over prompting or a frozen-encoder classifier, with an explanation whose faithfulness can be checked.
+    \item \textbf{Research Contributions:}
+    \begin{enumerate}
+        \item A controlled three-way comparison (classical, prompted, LoRA-tuned) on one frozen split, with the VLM backbone held fixed across prompting and fine-tuning.
+        \item An evaluation protocol for tiny test sets: macro-F1 with bootstrap confidence intervals, seed-averaged results, paired bootstrap tests against the baseline, and per-class and confusion-matrix reporting.
+        \item A quantitative faithfulness test of Grad-CAM on a frozen Swin transformer using deletion/insertion curves with a random control.
+        \item A complete, itemised record of hardware-driven deviations and of which comparisons to the published system are unverified.
+    \end{enumerate}
+\end{enumerate}

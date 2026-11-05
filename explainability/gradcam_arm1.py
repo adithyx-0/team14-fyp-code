@@ -17,6 +17,13 @@ though the conv weights don't accumulate gradients.
 
 Usage:
     python -m explainability.gradcam_arm1 [--n 12] [--level level2]
+        [--select spread|balanced] [--device cpu|mps|cuda]
+
+`--select balanced` runs Grad-CAM on the whole test set and keeps an equal
+number of correct and wrong predictions (so the saved examples show both
+behaviours); `spread` (default, original behaviour) alternates level1
+classes. Besides the PNG overlays, each run writes `records_<level>.json`
+in the shared `ExplanationRecord` schema (explainability/schema.py).
 """
 import argparse
 import csv
@@ -34,6 +41,7 @@ from arm1_classical.dataset import (
     _EVAL_TRANSFORM,
 )
 from arm1_classical.model import TEXT_MODEL_NAME, ClassicalBaseline
+from explainability.schema import ExplanationRecord, ImageRegions, save_records
 
 DATA_ROOT = "data/primary/malayalam"
 TEST_OCR_CSV = os.path.join(DATA_ROOT, "test_ocr.csv")
@@ -45,7 +53,9 @@ _MEAN = np.array([0.485, 0.456, 0.406])
 _STD = np.array([0.229, 0.224, 0.225])
 
 
-def get_device():
+def get_device(name=None):
+    if name:
+        return torch.device(name)
     if torch.backends.mps.is_available():
         return torch.device("mps")
     if torch.cuda.is_available():
@@ -70,8 +80,10 @@ def denormalize(img_t):
     return (arr * 255).astype(np.uint8)
 
 
-def compute_gradcam(model, img_t, input_ids, attention_mask, device, level="level2"):
-    """Returns (cam [7,7] float in [0,1], pred_idx, class_names)."""
+def compute_gradcam_full(model, img_t, input_ids, attention_mask, device, level="level2"):
+    """Returns dict: cam [7,7] in [0,1] (ReLU'd, max-normalized), raw [7,7]
+    (pre-ReLU, unnormalized; useful for breaking ties among zeroed cells),
+    pred_idx, class_names, prob (softmax prob of the predicted class)."""
     class_names = LEVEL1_CLASSES if level == "level1" else LEVEL2_CLASSES
     head = model.level1_head if level == "level1" else model.level2_head
 
@@ -95,6 +107,7 @@ def compute_gradcam(model, img_t, input_ids, attention_mask, device, level="leve
 
     logits = head(fused)
     pred_idx = logits.argmax(dim=1).item()
+    prob = torch.softmax(logits.detach(), dim=1)[0, pred_idx].item()
 
     model.zero_grad(set_to_none=True)
     logits[0, pred_idx].backward()
@@ -103,10 +116,41 @@ def compute_gradcam(model, img_t, input_ids, attention_mask, device, level="leve
     activ = feats.detach()[0]  # [7, 7, 768]
     weights = grads.mean(dim=(0, 1))  # [768] — GAP of gradient per channel
 
-    cam = torch.einsum("hwc,c->hw", activ, weights)
-    cam = F.relu(cam)
+    raw = torch.einsum("hwc,c->hw", activ, weights)
+    cam = F.relu(raw)
     cam = cam / (cam.max() + 1e-8)
-    return cam.cpu().numpy(), pred_idx, class_names
+    return {
+        "cam": cam.cpu().numpy(),
+        "raw": raw.cpu().numpy(),
+        "pred_idx": pred_idx,
+        "class_names": class_names,
+        "prob": prob,
+    }
+
+
+def compute_gradcam(model, img_t, input_ids, attention_mask, device, level="level2"):
+    """Returns (cam [7,7] float in [0,1], pred_idx, class_names)."""
+    out = compute_gradcam_full(model, img_t, input_ids, attention_mask, device, level)
+    return out["cam"], out["pred_idx"], out["class_names"]
+
+
+def load_model(device):
+    """Arm 1 model + MuRIL tokenizer with the final full-train checkpoint."""
+    tokenizer = AutoTokenizer.from_pretrained(TEXT_MODEL_NAME)
+    model = ClassicalBaseline().to(device)
+    state = torch.load(CHECKPOINT, map_location=device)
+    model.load_state_dict(state)
+    model.eval()
+    return model, tokenizer
+
+
+def prepare_row(row, tokenizer):
+    """CSV row -> (img_t [3,224,224] normalized, input_ids [64], attention_mask [64])."""
+    img = Image.open(os.path.join(DATA_ROOT, row["image"])).convert("RGB")
+    img_t = _EVAL_TRANSFORM(img)
+    text = row.get("ocr_text", "") or ""
+    enc = tokenizer(text, padding="max_length", truncation=True, max_length=64, return_tensors="pt")
+    return img_t, enc["input_ids"].squeeze(0), enc["attention_mask"].squeeze(0)
 
 
 def overlay_cam(img_uint8, cam_7x7, alpha=0.45):
@@ -118,58 +162,62 @@ def overlay_cam(img_uint8, cam_7x7, alpha=0.45):
     return Image.fromarray(blended)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--n", type=int, default=12, help="number of test images to run (spread across classes)")
-    ap.add_argument("--level", choices=["level1", "level2"], default="level1")
-    args = ap.parse_args()
-
-    device = get_device()
-    print("device:", device)
-
-    with open(TEST_OCR_CSV) as f:
-        rows = list(csv.DictReader(f))
-
-    # spread the sample across level1 classes so the guide sees both, not
-    # just whichever class happens to sort first in the CSV
+def pick_spread(rows, n):
+    """Original behaviour: alternate level1 classes so both appear."""
     by_class = {}
     for r in rows:
         by_class.setdefault(r["level1"], []).append(r)
     picked = []
     i = 0
     classes = list(by_class.keys())
-    while len(picked) < min(args.n, len(rows)):
+    while len(picked) < min(n, len(rows)):
         cls = classes[i % len(classes)]
         if by_class[cls]:
             picked.append(by_class[cls].pop(0))
         i += 1
         if all(not v for v in by_class.values()):
             break
+    return picked
 
-    tokenizer = AutoTokenizer.from_pretrained(TEXT_MODEL_NAME)
-    model = ClassicalBaseline().to(device)
-    state = torch.load(CHECKPOINT, map_location=device)
-    model.load_state_dict(state)
-    model.eval()
 
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--n", type=int, default=12, help="number of test images to keep")
+    ap.add_argument("--level", choices=["level1", "level2"], default="level1")
+    ap.add_argument("--select", choices=["spread", "balanced"], default="spread")
+    ap.add_argument("--device", default=None, help="cpu | mps | cuda (default: best available)")
+    args = ap.parse_args()
+
+    device = get_device(args.device)
+    print("device:", device)
+
+    with open(TEST_OCR_CSV) as f:
+        rows = list(csv.DictReader(f))
+
+    candidates = rows if args.select == "balanced" else pick_spread(rows, args.n)
+
+    model, tokenizer = load_model(device)
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    for row in picked:
-        img_path = os.path.join(DATA_ROOT, row["image"])
-        img = Image.open(img_path).convert("RGB")
-        img_t = _EVAL_TRANSFORM(img)
-
-        text = row.get("ocr_text", "") or ""
-        enc = tokenizer(text, padding="max_length", truncation=True, max_length=64, return_tensors="pt")
-        input_ids = enc["input_ids"].squeeze(0)
-        attention_mask = enc["attention_mask"].squeeze(0)
-
+    results = []
+    for row in candidates:
+        img_t, input_ids, attention_mask = prepare_row(row, tokenizer)
         cam, pred_idx, class_names = compute_gradcam(
             model, img_t, input_ids, attention_mask, device, level=args.level
         )
         pred_label = class_names[pred_idx]
-        true_label = row[args.level]
+        results.append((row, img_t, cam, pred_label, row[args.level]))
 
+    if args.select == "balanced":
+        right = [r for r in results if r[3] == r[4]]
+        wrong = [r for r in results if r[3] != r[4]]
+        k = args.n // 2
+        results = wrong[:k] + right[: args.n - min(k, len(wrong))]
+        print(f"balanced selection: {len(wrong[:k])} wrong + {len(results) - len(wrong[:k])} correct "
+              f"(available: {len(wrong)} wrong, {len(right)} correct)")
+
+    records = []
+    for row, img_t, cam, pred_label, true_label in results:
         disp_img = denormalize(img_t)
         overlay = overlay_cam(disp_img, cam)
 
@@ -177,9 +225,23 @@ def main():
         correct = "correct" if pred_label == true_label else "wrong"
         out_path = os.path.join(OUT_DIR, f"{stem}_{args.level}_true-{true_label}_pred-{pred_label}_{correct}.png")
         overlay.save(out_path)
+        records.append(
+            ExplanationRecord(
+                example_id=stem,
+                arm="arm1",
+                level=args.level,
+                pred=pred_label,
+                true_label=true_label,
+                image_regions=ImageRegions(
+                    heatmap=cam.tolist(), image_size=(224, 224), heatmap_path=out_path, method="gradcam"
+                ),
+            )
+        )
         print(f"{row['image']}: true={true_label} pred={pred_label} ({correct}) -> {out_path}")
 
-    print(f"\n{len(picked)} Grad-CAM overlays written to {OUT_DIR}/")
+    rec_path = os.path.join(OUT_DIR, f"records_{args.level}.json")
+    save_records(records, rec_path)
+    print(f"\n{len(results)} Grad-CAM overlays written to {OUT_DIR}/ ; records -> {rec_path}")
 
 
 if __name__ == "__main__":

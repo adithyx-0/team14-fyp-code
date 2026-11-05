@@ -9,3 +9,6 @@ __pycache__/
 *.safetensors
 
 .env
+
+# Arm 3 LoRA adapters (reproducible from run_ablation.py)
+outputs/arm3_peft_finetune/adapters/

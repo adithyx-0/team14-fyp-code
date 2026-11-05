@@ -1,0 +1,45 @@
+device: cpu
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 75324.11it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google/muril-base-cased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.decoder.bias               | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.decoder.weight             | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  [level1] 0/30 images, 0s elapsed
+  [level1] 5/30 images, 116s elapsed
+  [level1] 10/30 images, 277s elapsed
+  [level1] 15/30 images, 458s elapsed
+  [level1] 20/30 images, 2888s elapsed
+  [level1] 25/30 images, 3253s elapsed
+[level1] 3309s  n=30
+  del_auc_gradcam: 0.5667 +/- 0.3119
+  del_auc_random: 0.7680 +/- 0.1888
+  ins_auc_gradcam: 0.8927 +/- 0.1530
+  ins_auc_random: 0.7404 +/- 0.2295
+  del paired: {'mean_diff_gradcam_minus_random': -0.20135551780261504, 'frac_images_gradcam_better': 0.8, 'wilcoxon_p_one_sided': 2.7962960302829742e-05}
+  ins paired: {'mean_diff_gradcam_minus_random': 0.15228983471255697, 'frac_images_gradcam_better': 0.9, 'wilcoxon_p_one_sided': 2.9867514967918396e-06}
+  [level2] 0/30 images, 0s elapsed
+  [level2] 5/30 images, 1523s elapsed
+  [level2] 10/30 images, 4491s elapsed
+  [level2] 15/30 images, 4751s elapsed
+  [level2] 20/30 images, 4977s elapsed
+  [level2] 25/30 images, 5164s elapsed
+[level2] 5367s  n=30
+  del_auc_gradcam: 0.3107 +/- 0.1693
+  del_auc_random: 0.5161 +/- 0.1892
+  ins_auc_gradcam: 0.6114 +/- 0.2878
+  ins_auc_random: 0.4963 +/- 0.2830
+  del paired: {'mean_diff_gradcam_minus_random': -0.20537852761167624, 'frac_images_gradcam_better': 0.9, 'wilcoxon_p_one_sided': 8.195638656616211e-08}
+  ins paired: {'mean_diff_gradcam_minus_random': 0.11510626687523075, 'frac_images_gradcam_better': 0.8, 'wilcoxon_p_one_sided': 3.528408706188202e-05}
+wrote outputs/explainability/faithfulness_results.json

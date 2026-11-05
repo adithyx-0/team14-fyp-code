@@ -1,0 +1,5 @@
+Saving the dataset (0/1 shards):   0%|          | 0/779 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 779/779 [00:00<00:00, 298498.34 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 779/779 [00:00<00:00, 277931.51 examples/s]
+Saved 779 examples to data/malayalam_train_oversampled_dataset
+Example[0]:
+[{'role': 'user', 'content': [{'type': 'image'}, {'type': 'text', 'text': 'Analyze the political intent and target of the meme.'}]}, {'role': 'assistant', 'content': [{'type': 'text', 'text': 'INTENT: CRITICISE\nTARGET: BOTH'}]}]
+data/resized_512/malayalam_train_oversampled_dataset/1.jpg

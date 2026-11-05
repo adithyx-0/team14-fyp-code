@@ -1,0 +1,16 @@
+\section{Conclusion}
+
+We built and compared three approaches to two-level stance classification of Malayalam political memes on one frozen split and with one metric: a frozen-encoder classical baseline, a prompted Qwen3-VL-2B, and the same model fine-tuned with LoRA. The central result is that, on a 100-image test set with four ``support'' examples, no system is significantly better than the classical baseline, and the variation between random seeds of the same configuration is as large as the gaps between methods. Prompting without any training was competitive with LoRA fine-tuning on 500 images. Minority oversampling improved Level-2 results across three seeds, but the evidence for an overall gain is suggestive, not conclusive. Grad-CAM on the classical baseline is faithful, beating a random-order control on deletion and insertion for 82--93\% of 100 images ($p<10^{-11}$).
+
+The study's main practical lesson is methodological: on small, imbalanced data, uncertainty must be reported, and one best seed is not a result. We also record, in full, where hardware limits forced deviations from the plan, and that the comparison with the published SYNAPSE scores remains unverified.
+
+\section{Scope for Further Research (Phase II)}
+
+\begin{enumerate}
+    \item Run the 7B-scale VLMs and few-shot prompting on an A100, and Gemini~2.5~Flash through its API (script ready).
+    \item Complete the oversampling study with more seeds and a validation split, so the gain can be tested rather than suggested.
+    \item Build natural-language rationale generation and a cross-modal faithfulness score between rationale and heatmap, and extend Grad-CAM to the VLM vision tower and to the text branch.
+    \item Obtain the Tamil and Malayalam misogyny set and the Hateful Memes reference set, and study checkpoint and prompt-language transfer separately.
+    \item Obtain the SYNAPSE paper or contact its authors to confirm the test split and class counts, so a like-for-like comparison is possible.
+    \item Evaluate LLM-generated augmentation of the minority classes against no augmentation and manual augmentation.
+\end{enumerate}

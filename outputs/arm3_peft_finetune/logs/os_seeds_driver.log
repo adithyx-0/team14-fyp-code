@@ -1,0 +1,6 @@
+[train] r4_os_s43 rank=4 seed=43 oversample=True
+[infer] r4_os_s43 (train took 560s)
+[done] r4_os_s43 in 618s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r4_os_s43.json
+[train] r4_os_s44 rank=4 seed=44 oversample=True
+[infer] r4_os_s44 (train took 633s)
+[done] r4_os_s44 in 698s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r4_os_s44.json

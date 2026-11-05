@@ -1,0 +1,188 @@
+%AMRITA UNIVERSITY PH.D latex template...Created by Chungath, CYS-CBE%
+
+\documentclass[a4paper, 12pt]{report}
+%\renewcommand{\bibname}{References}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{bold-extra}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+%\usepackage[a4paper,top=30mm,bottom=30mm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\graphicspath{{images/}}
+\usepackage{amsthm}
+%\usepackage{hyperref}
+%\hypersetup{colourlinks=true,linkcolour=blue}
+\usepackage{array}
+%\usepackage{parskip}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titletoc}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{url}
+\theoremstyle{definition}
+\newtheorem{Definition}{Definition}[section]
+
+%-------------------------------------------------------------
+% title page
+\begin{document}
+	\pagenumbering{gobble}
+	\thispagestyle{empty}
+	\begin{large}
+		\begin{center}
+			{\Large\bfseries{Does Fine-Tuning Beat Prompting? A Controlled, Uncertainty-Aware Comparison of Classical, Zero-Shot and LoRA-Tuned Vision-Language Models for Stance and Target Classification of Malayalam Political Memes}}\\
+			\vspace{1.3cm}
+			A PROJECT REPORT \\
+			\vspace{.1cm}
+			Submitted in partial fulfillment for the Degree of\\
+			\vspace{.1cm}
+			Bachelor of Technology under the\\
+			\vspace{.1cm}
+			School of Computing\\
+			\vspace{1cm}
+			
+			\normalsize Submitted by \\
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}\hline \\
+Register No & Names of Students \\ \\ \hline
+\\
+AM.SC.U4AIE23007 & Adithya Rajesh \\
+AM.SC.U4AIE23026 & Balu M Krishna \\ 
+AM.SC.U4AIE23065 & Adithyan \\ \\ \hline 
+\end{tabular}
+\end{table}
+
+
+
+\vfill
+			\includegraphics[scale=0.7]{univA.png}\\
+			DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
+			\Large{\textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large Amritapuri Campus (INDIA)}\\
+			\vspace*{.3cm}
+			October 2026
+		\end{center}
+	\end{large}
+	%------------------------------------------------------------------------------------
+	% bonafide certificate
+	\newpage
+	\begin{center}
+		
+		{\large Department of Computer Science and Engineering}\\
+		\Large{ \textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large AMRITAPURI CAMPUS}\\
+		\vspace*{2.2cm}
+		%\includegraphics[width=5cm,height=5cm,keepaspectratio]{university.jpg}
+		\includegraphics[scale=0.5]{univa.png}\\
+		\vspace*{1.5cm}
+		{\Large \textbf{BONAFIDE CERTIFICATE}}
+	\end{center}
+	\vspace*{.8cm}
+	This is to certify that this is a bonafide record of the project presented by the students whose names are given below during Project Phase I (22AIE498) in partial fulfilment of the requirements of the degree of Bachelor of Technology in Computer Science and Engineering (Artificial Intelligence).\\[1.0cm]
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+Roll No & Names of Students \\ \\ \hline
+\\
+AM.SC.U4AIE23007 & Adithya Rajesh \\ 
+AM.SC.U4AIE23026 & Balu M Krishna \\
+AM.SC.U4AIE23065 & Adithyan \\
+
+\end{tabular}
+\end{table}
+
+
+
+% Bottom of the page
+\begin{flushleft}
+  Dr. Veena G\\
+(Project Guide)\\  [1cm]
+
+ \texttt{<}Coordinator name here\texttt{>}\\
+(Project Coordinator)\\
+Designation\\
+\end{flushleft}
+\begin{flushright}
+\texttt{<}Reviewer's Name\texttt{>}\\
+(Reviewer)\\
+Designation
+\end{flushright}
+
+
+
+
+\newpage
+	%-----------------------------------------------------------------------------
+	\clearpage
+	\pagenumbering{roman}
+	\tableofcontents
+	
+	\chapter*{Acknowledgements}
+	\addcontentsline{toc}{chapter}{Acknowledgements}	
+	We express our sincere gratitude to our project guide, Dr. Veena G, for her guidance, regular feedback and encouragement throughout Project Phase I. We thank the Department of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Amritapuri Campus, for providing the opportunity and the environment to carry out this work, and the organisers of the DravidianLangTech shared task for the Malayalam meme dataset on which this study is based.\\
+	\vspace{1cm}
+	\begin{flushright}
+		ADITHYA RAJESH\\
+		BALU M KRISHNA\\
+		ADITHYAN
+	\end{flushright}
+	\listoffigures
+	\addcontentsline{toc}{chapter}{List of figures}
+	\listoftables
+	\addcontentsline{toc}{chapter}{List of tables}
+	\newpage
+%\chapter*{Abbreviations}
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Internet memes are a major vehicle for political opinion in India, yet almost all multimodal meme research targets English and asks whether a meme is hateful, not what stance it takes toward whom. We study a two-level stance task on Malayalam political memes: Level~1 (troll vs.\ support) and Level~2 (target: person, party or both). Using one frozen 500/100 train/test split and one metric (macro-F1 with bootstrap confidence intervals), we compare three families on equal terms: a classical baseline (frozen Swin-Tiny and MuRIL with a residual fusion head), prompt-only inference with a vision-language model (Qwen3-VL-2B, zero-shot and chain-of-thought), and parameter-efficient LoRA fine-tuning of the same Qwen3-VL-2B across rank, seed and minority-oversampling settings. Using the same backbone for prompting and fine-tuning isolates the effect of training from the effect of model choice. We also test whether Grad-CAM heatmaps on the classical baseline are faithful, using deletion and insertion curves against a random-order control.
+
+The main finding is a cautionary one. On a 100-image test set with only four ``support'' memes, no system is significantly better than the classical baseline at Level~1, and the same LoRA configuration varies from 0.38 to 0.51 average macro-F1 across seeds, which is as large as the gaps between methods. Level-2 macro-F1 is 0.394 for the classical baseline, 0.499 for zero-shot prompting and 0.482 $\pm$ 0.026 for LoRA with minority oversampling (three seeds), against 0.349 $\pm$ 0.061 for plain LoRA; plain LoRA frequently collapses to the majority class. Grad-CAM beats random patch ordering on both deletion and insertion for 82--93\% of images ($p<10^{-11}$), so the maps are faithful to the model at their coarse $7\times7$ resolution. We also flag which comparisons to the published reference system we could not verify. Natural-language rationales, cross-lingual transfer and a 7B-scale study are left to Phase~II.\\
+\textbf{Keywords:} multimodal meme analysis, Malayalam, vision-language models, LoRA, explainability, Grad-CAM, low-resource languages.\\
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\chapter{Introduction}
+\input{chapters/introduction}
+\chapter{Literature Review/ Existing System}
+\input{chapters/chapter2}
+\chapter{Proposed Work}
+\input{chapters/chapter3}
+\chapter{Experimentation and Result Analysis}
+\input{chapters/chapter4} 
+\chapter{Conclusion and Scope for further Research}
+\input{chapters/conclusion}
+\appendix
+\chapter{title of appendix}
+\input{chapters/appendix}
+
+%\addcontentsline{toc}{chapter}{\textbf{References}}
+\newpage
+\renewcommand{\bibname}{References}
+\bibliographystyle{ieeetr}
+\addcontentsline{toc}{chapter}{References}
+\bibliography{mybib}
+
+
+
+
+
+\end{document}
+	
+	

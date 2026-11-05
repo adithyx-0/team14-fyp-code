@@ -1,0 +1,104 @@
+\label{chap.3}
+\section{Proposed Work}
+
+Chapter~2 identified three gaps: no controlled prompting-versus-fine-tuning comparison for a Dravidian meme task, small-data results reported without uncertainty, and explanations that are shown but not tested. The proposed work answers these with one frozen data split, three systems (``arms'') that differ only in how the model is built or adapted, one evaluation script that scores all of them identically, and a quantitative faithfulness test for the explanations. The novelty is not a new architecture. It is the \emph{controlled design}: the same Qwen3-VL-2B backbone is both prompted and fine-tuned, so any difference between Arms~2 and~3 is due to training and not to model choice, and every score carries its uncertainty.
+
+\subsection{Objectives of the Proposed Work}
+
+\textbf{Primary:} (i) compare classical, prompted and LoRA-tuned systems on Level-1 and Level-2 macro-F1 on one 100-image test set; (ii) quantify the uncertainty of every comparison.\\
+\textbf{Secondary:} (iii) measure how LoRA rank, random seed and minority oversampling affect results; (iv) test whether Grad-CAM heatmaps from Arm~1 are faithful; (v) provide a live demonstration of Arm~1 with Grad-CAM.
+
+\section{Methodology}
+
+\subsection{Overview of the Approach}
+
+All arms read the same memes and are scored by the same code (Figure~\ref{fig:pipeline}). Arm~1 trains a small head on frozen encoders. Arm~2 changes no weights and only varies the prompt. Arm~3 trains low-rank adapters on the same VLM that Arm~2 prompts. The explainability module is applied to Arm~1, and the evaluation module consumes the predictions of every arm.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=0.55cm and 0.7cm, every node/.style={font=\small},
+  box/.style={draw, rounded corners, align=center, minimum height=0.9cm, minimum width=2.3cm, fill=blue!6},
+  arm/.style={draw, rounded corners, align=center, minimum height=0.8cm, text width=4.4cm, fill=green!8},
+  arr/.style={-{Stealth[length=2.2mm]}, thick}]
+\node[box] (data) {Malayalam memes\\500 train / 100 test\\(frozen split)};
+\node[arm, right=1.0cm of data] (a2) {Arm 2: Qwen3-VL-2B\\zero-shot / chain-of-thought};
+\node[arm, above=0.35cm of a2] (a1) {Arm 1: Swin-T + MuRIL (frozen)\\residual fusion head};
+\node[arm, below=0.35cm of a2] (a3) {Arm 3: Qwen3-VL-2B + LoRA\\rank, seed, oversampling};
+\node[box, right=1.0cm of a2, fill=orange!10] (eval) {Evaluation\\macro-F1, bootstrap CI,\\paired tests};
+\node[box, above=0.55cm of eval, fill=purple!8] (xai) {Explainability\\Grad-CAM +\\deletion/insertion};
+\node[box, below=0.55cm of eval, fill=red!6] (demo) {Web demo\\(Arm 1 + Grad-CAM)};
+\draw[arr] (data) -- (a1); \draw[arr] (data) -- (a2); \draw[arr] (data) -- (a3);
+\draw[arr] (a1) -- (eval); \draw[arr] (a2) -- (eval); \draw[arr] (a3) -- (eval);
+\draw[arr] (a1.north east) -- (xai.west);
+\draw[arr] (a1.south east) to[bend left=10] (demo.west);
+\end{tikzpicture}
+\caption{As-built pipeline for Phase I.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{Dataset Selection}
+
+The primary dataset is the Malayalam political-meme set of the DravidianLangTech 2026 shared task. Each meme has two labels: Level~1 (troll or support) and Level~2 (person, party or intersection; the source labels PERSON, PARTY, BOTH are normalised once, in the evaluation script). The training set has 500 images (477 troll, 23 support). The held-out test set has 100 images: 96 troll and 4 support at Level~1, and 54 person, 31 party and 15 intersection at Level~2. The test ids and labels were checked to be identical (100 of 100) across every arm's files. A 5-fold cross-validation split of the training set, stratified on Level~1 with seed 42, is used for Arm~1 model selection.
+
+\subsection{Algorithm/Model Design}
+
+\textbf{Arm 1: classical baseline.} A Swin-Tiny vision transformer \cite{liu2021swin} and MuRIL \cite{khanuja2021muril}, a BERT model pretrained on Indian languages, are both \emph{frozen}. Their 768-dimensional outputs are projected to 512 dimensions, concatenated and refined by two residual fusion blocks, $\mathbf{z}\leftarrow \mathrm{LN}(\mathbf{z}+\mathrm{MLP}(\mathbf{z}))$, then fed to two linear heads, one per label level. Only the projections, fusion blocks and heads are trained (AdamW, learning rate $10^{-3}$, batch size 16, 8 epochs), with class-weighted cross-entropy for imbalance. The text input is the text extracted from the meme image by Tesseract OCR \cite{smith2007tesseract}, because the source data contain no caption field.
+
+\textbf{Arm 2: prompted VLM.} Qwen3-VL-2B-Instruct, quantised to 8 bits and run with MLX, is given the image only (no OCR text) and a task description asking for an INTENT (SUPPORT or CRITICISE) and a TARGET (PERSON, PARTY or BOTH). Two strategies are run with greedy decoding: \emph{zero-shot}, and \emph{chain-of-thought} \cite{wei2022cot} in which the model reasons for at most three short sentences and a second turn then asks only for the two answer lines \cite{kojima2022zeroshot}. The second turn is needed because the 2B model's free reasoning often repeats itself and exhausts the token budget before answering. Output that cannot be parsed counts as wrong. The prompt is label-neutral.
+
+\textbf{Arm 3: LoRA fine-tuning.} The same Qwen3-VL-2B is adapted with LoRA \cite{hu2022lora} on the query and value projections of the language decoder only (vision tower frozen). The base configuration follows the SYNAPSE recipe: rank 4, $\alpha=8$, dropout 0.15, learning rate $5\times10^{-5}$, weight decay 0.1, effective batch size 8, 500 steps, and a structured INTENT/TARGET output. The ablation varies rank $\in\{4,8,16\}$ (with $\alpha=2\cdot$rank), seed $\in\{42,43,44\}$, and one oversampling condition in which ``party'' memes are duplicated twice and ``intersection'' memes four times in the training set only. The test set is never altered.
+
+\subsection{Explainability and Faithfulness Method}
+
+For Arm~1's image branch we compute Grad-CAM \cite{selvaraju2020gradcam} on the last-stage Swin feature map. Swin has no convolutional layer, so we use the $7\times7\times768$ output of its \texttt{forward\_features()} as the target. The backbone weights are frozen, so the input tensor itself is marked as requiring gradients, which lets gradients reach the feature map without any weight gradients being computed. Each cell of the map covers a $32\times32$ pixel patch of the $224\times224$ input.
+
+To test faithfulness we use the deletion/insertion protocol of RISE \cite{petsiuk2018rise}. In \emph{deletion}, patches are removed in order of decreasing saliency and the model's probability for its predicted class is tracked; a faithful map makes this probability fall quickly, giving a low area under the curve (AUC). In \emph{insertion}, patches are revealed in the same order and a faithful map gives a high AUC. The control is the same procedure with a random patch order (5 seeds per image). We compare per image with a paired one-sided Wilcoxon signed-rank test. Only the image branch is perturbed; the OCR text is held fixed.
+
+\subsection{Evaluation Protocol}
+
+Every system is scored by one script. The metric is macro-F1 for each level, because accuracy would reward predicting the majority class (96\% of the test set is troll at Level~1). The average of the two levels, Avg-F1, is the shared-task ranking metric. Uncertainty is given by 95\% percentile bootstrap intervals (2000 resamples of the test set, seed 42). Differences from Arm~1 are tested with a paired bootstrap that reuses the same resamples for both systems. For Arm~3, configurations are judged by the mean and standard deviation over seeds, not by the best seed.
+
+\subsection{Tools and Technologies}
+
+Python 3.12, PyTorch, \texttt{timm} (Swin-Tiny), Hugging Face \texttt{transformers} (MuRIL), Tesseract OCR, MLX and \texttt{mlx-vlm} (Qwen3-VL-2B inference and LoRA training on Apple silicon), NumPy/pandas/scikit-learn for evaluation, FastAPI for the demonstration site, and Git for version control. All experiments ran on a 16\,GB Apple M-series laptop.
+
+\subsection{Deviations from the Original Plan}
+\label{sec:deviations}
+
+The original plan assumed an A100 GPU, which was not available. Each affected item was replaced by the closest feasible experiment (Table~\ref{tab:deviations}); none was silently dropped.
+
+\begin{table}[h]
+\centering
+\caption{Planned work and what was done instead.}
+\label{tab:deviations}
+\small
+\begin{tabular}{p{4.0cm}p{5.4cm}p{5.6cm}}
+\toprule
+Planned & Done in Phase I & Reason \\
+\midrule
+Three 7B VLMs (Qwen2.5-VL-7B, LLaVA-1.6, PaliGemma) plus Gemini 2.5 Flash; zero/few-shot/CoT & Qwen3-VL-2B (8-bit); zero-shot and CoT; Gemini script written but not run & 7B in bf16 does not fit in 16\,GB; 2B is also the SYNAPSE backbone \\
+QLoRA on three 7B models, 30--40 run grid & LoRA on Qwen3-VL-2B, 8 runs over rank, seed and oversampling & One run takes about 10 minutes locally \\
+Explainability on VLM vision towers & Grad-CAM and faithfulness on Arm 1 only; shared record schema for later arms & Gradients through a 7B model need GPU memory \\
+Hateful Memes and Tamil/Malayalam misogyny sets; cross-lingual transfer & Not run & Datasets were not obtained \\
+LLM-generated synthetic augmentation & Deferred; class weighting (Arm 1) and oversampling (Arm 3) used instead & Schedule \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Expected Outcomes}
+
+We expected fine-tuning to beat prompting and prompting to beat a frozen-encoder classifier, and we expected the Grad-CAM maps to beat random ordering. Only the last of these is confirmed by the results (Chapter~4).
+
+\subsection{Advantages of the Proposed Work}
+
+The design isolates the effect of training by holding the backbone fixed, uses the same split and metric for every system, quantifies uncertainty instead of reporting single scores, and runs entirely on a laptop, so it can be reproduced without a GPU cluster.
+
+\subsection{Limitations and Assumptions}
+
+\begin{itemize}
+    \item The test set has 100 images, of which only 4 are ``support'', so Level-1 macro-F1 rests on four examples.
+    \item There is no validation split (500 train, 100 test). No configuration was tuned on held-out data, but a seed chosen after seeing test scores is a lead, not a result.
+    \item A 2B model in 8 bits is not representative of 7B-scale VLMs; conclusions apply to this scale.
+    \item Arm~1's OCR text has about 20\% empty extractions that were not manually verified.
+    \item Faithfulness is measured with respect to the model, not to human judgement of plausibility.
+\end{itemize}

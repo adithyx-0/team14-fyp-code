@@ -1,0 +1,158 @@
+\label{chap.4}
+This chapter reports how the three arms and the explainability method were evaluated. All numbers come from \texttt{outputs/evaluation/consolidated.md} and the per-arm result files in the project repository.
+
+\section{Experimental Setup}
+
+All experiments ran on a 16\,GB Apple M-series laptop with Python 3.12, PyTorch and \texttt{timm} for Arm~1, and MLX with \texttt{mlx-vlm} for Qwen3-VL-2B (8-bit) in Arms~2 and~3. No GPU server was used. Arm~1 was trained for 8 epochs; each Arm~3 run takes about 10 minutes.
+
+\section{Datasets}
+
+The Malayalam political-meme set of the DravidianLangTech 2026 shared task is used: 500 training and 100 held-out test images (Section~3.2.2). The Level-1 test distribution is 96 troll and 4 support; the Level-2 distribution is 54 person, 31 party and 15 intersection. Images were resized to 512\,px for the VLM arms and 224\,px for Swin-Tiny.
+
+\section{Evaluation Metrics}
+
+Macro-F1 at Level~1 and Level~2, and their mean (Avg-F1). Each score is given with a 95\% bootstrap interval. Per-class F1 and Level-2 confusion matrices are used for diagnosis. Faithfulness is measured with deletion and insertion AUC against a random-order control.
+
+\section{Experimental Design}
+
+\textbf{Baselines.} A majority-class predictor (always troll and person) shows what a model that learns nothing obtains. Arm~1 is the anchor against which all other systems are compared. Our own replication of the SYNAPSE recipe (Qwen3-VL-2B with LoRA, rank 4, 8-bit, MLX) is included as a reference, and the SYNAPSE paper's reported scores are shown separately and marked as not reproduced.
+
+\subsection{Experimental Scenarios}
+
+Arm~2: zero-shot and chain-of-thought. Arm~3: rank 4 (seeds 42, 43, 44), rank 4 with minority oversampling (seeds 42, 43, 44), rank 8 (seed 42) and rank 16 (seed 42).
+
+\subsection{Parameter Tuning}
+
+No hyperparameter search was performed. Arm~1 uses a single setting and Arm~3's base setting is taken from the SYNAPSE recipe. The only axes varied are LoRA rank, seed and oversampling, and the seeds were fixed in advance, not chosen on test scores.
+
+\section{Results}
+
+\subsection{Main comparison}
+
+Table~\ref{tab:main} gives the main comparison. Arm~3 rows are the mean $\pm$ standard deviation over three seeds (sample standard deviation); rank 8 and 16 have one seed each.
+
+\begin{table}[h]
+\centering
+\caption{Macro-F1 on the 100-image Malayalam test set. Brackets are 95\% bootstrap intervals for single runs; $\pm$ is the standard deviation over seeds.}
+\label{tab:main}
+\small
+\begin{tabular}{p{6.2cm}ccc}
+\toprule
+System & Level-1 F1 & Level-2 F1 & Avg-F1 \\
+\midrule
+Majority class & 0.490 & 0.234 & 0.362 \\
+Arm 1: Swin-Tiny + MuRIL & 0.508 [0.42, 0.61] & 0.394 [0.30, 0.49] & 0.451 [0.39, 0.51] \\
+Arm 2: Qwen3-VL-2B zero-shot & 0.487 [0.47, 0.50] & \textbf{0.499} [0.38, 0.60] & 0.493 [0.44, 0.54] \\
+Arm 2: Qwen3-VL-2B chain-of-thought & 0.482 [0.47, 0.50] & 0.429 [0.32, 0.53] & 0.455 [0.40, 0.51] \\
+Arm 3: LoRA r4 (3 seeds) & 0.571 $\pm$ 0.059 & 0.349 $\pm$ 0.061 & 0.460 $\pm$ 0.055 \\
+Arm 3: LoRA r4 + oversampling (3 seeds) & 0.557 $\pm$ 0.095 & 0.482 $\pm$ 0.026 & \textbf{0.520} $\pm$ 0.057 \\
+Arm 3: LoRA r8 (1 seed) & 0.609 & 0.329 & 0.469 \\
+Arm 3: LoRA r16 (1 seed) & 0.630 & 0.234 & 0.432 \\
+SYNAPSE replication (ours) & 0.656 [0.48, 0.87] & 0.318 [0.24, 0.39] & 0.487 [0.38, 0.60] \\
+\midrule
+\emph{SYNAPSE paper (reported, not reproduced)} & 0.920 & 0.426 & 0.673 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Effect of random seed}
+
+The same LoRA configuration gives very different results across seeds (Table~\ref{tab:seeds}). Rank-4 plain LoRA spans Avg-F1 0.38 to 0.51, and the oversampling configuration spans 0.47 to 0.60. The best single run (rank 4 with oversampling, seed 42: Level-1 0.692, Level-2 0.505, Avg 0.599) is therefore the most favourable of three seeds and should not be quoted on its own.
+
+\begin{table}[h]
+\centering
+\caption{Arm 3 per-seed Avg-F1 (Level-1 / Level-2 in brackets).}
+\label{tab:seeds}
+\small
+\begin{tabular}{lccc}
+\toprule
+Configuration & Seed 42 & Seed 43 & Seed 44 \\
+\midrule
+r4 & 0.510 (0.593 / 0.427) & 0.486 (0.630 / 0.343) & 0.384 (0.490 / 0.277) \\
+r4 + oversampling & 0.599 (0.692 / 0.505) & 0.468 (0.490 / 0.445) & 0.493 (0.490 / 0.496) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Per-class behaviour}
+
+Table~\ref{tab:perclass} shows why the Level-2 scores are low. Plain LoRA often predicts only the majority classes: rank 16 predicts ``person'' for every image, so its Level-2 F1 (0.234) equals the majority baseline exactly. The prompted model and the classical baseline recover about a third to 40\% of the intersection memes, and the best oversampled LoRA run recovers 11 of 15 (73\%), though other seeds of the same configuration recover only 1 to 4 of 15.
+
+\begin{table}[h]
+\centering
+\caption{Per-class F1 (selected systems).}
+\label{tab:perclass}
+\small
+\begin{tabular}{lccccc}
+\toprule
+System & troll & support & person & party & intersection \\
+\midrule
+Majority class & 0.980 & 0.000 & 0.701 & 0.000 & 0.000 \\
+Arm 1 & 0.867 & 0.148 & 0.526 & 0.433 & 0.222 \\
+Arm 2 zero-shot & 0.974 & 0.000 & 0.649 & 0.433 & 0.414 \\
+Arm 3 r4 seed 42 & 0.963 & 0.222 & 0.726 & 0.222 & 0.333 \\
+Arm 3 r4+os seed 42 & 0.985 & 0.400 & 0.733 & 0.270 & 0.512 \\
+Arm 3 r16 seed 42 & 0.974 & 0.286 & 0.701 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Qualitative results: Grad-CAM}
+
+Figure~\ref{fig:gradcam} shows Grad-CAM overlays for held-out memes, including a correct and an incorrect prediction. Single maps are illustrations only; the quantitative test in Section~\ref{sec:faith} supports any claim about them.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.31\textwidth}\includegraphics[width=\textwidth]{35_level1_true-troll_pred-troll_correct.png}\caption{Level 1, correct (troll)}\end{subfigure}\hfill
+\begin{subfigure}{0.31\textwidth}\includegraphics[width=\textwidth]{100_level1_true-troll_pred-support_wrong.png}\caption{Level 1, wrong (troll predicted support)}\end{subfigure}\hfill
+\begin{subfigure}{0.31\textwidth}\includegraphics[width=\textwidth]{2_level2_true-person_pred-person_correct.png}\caption{Level 2, correct (person)}\end{subfigure}
+\caption{Grad-CAM overlays on Arm 1's Swin-Tiny branch (test memes).}
+\label{fig:gradcam}
+\end{figure}
+
+\subsection{Faithfulness of the heatmaps}
+\label{sec:faith}
+
+On all 100 test images, with five random orderings per image, Grad-CAM beats random patch order on both deletion and insertion at both levels (Table~\ref{tab:faith}). Grad-CAM is better on 82--93\% of images and the paired Wilcoxon test gives $p<10^{-11}$ in every case.
+
+\begin{table}[h]
+\centering
+\caption{Deletion and insertion AUC, Arm 1, $n=100$ test images (mean).}
+\label{tab:faith}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Level & Del.\ CAM $\downarrow$ & Del.\ rand. & Ins.\ CAM $\uparrow$ & Ins.\ rand. \\
+\midrule
+1 (troll/support) & 0.588 & 0.791 & 0.864 & 0.736 \\
+2 (person/party/inters.) & 0.354 & 0.551 & 0.627 & 0.511 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Analysis of Results}
+
+\subsection{Observations}
+
+\begin{enumerate}
+    \item \textbf{Level~1 cannot separate the systems.} With four support memes, every Level-1 interval is wide (the upper end of one run reaches 1.00), and none of the Level-1 differences from Arm~1 is significant (paired bootstrap $p\ge0.44$).
+    \item \textbf{At Level~2 the differences are small compared with the noise.} Zero-shot prompting (0.499) and oversampled LoRA (0.482 mean) exceed Arm~1 (0.394), but the paired bootstrap intervals on the difference include zero in every case ($p=0.11$ to $0.46$). The only significant differences at Level~2 are against the majority baseline and for the weakest LoRA runs, which are \emph{worse} than Arm~1 (rank 16, $p=0.003$; rank 4 seed 44, $p=0.029$).
+    \item \textbf{Fine-tuning did not reliably beat prompting.} Plain LoRA (Avg 0.460) does not exceed zero-shot prompting of the same backbone (0.493) or the classical baseline (0.451), and often collapses to the majority class. Oversampling helps Level-2 across seeds (0.482 $\pm$ 0.026 versus 0.349 $\pm$ 0.061), but the Avg-F1 gain (0.520 versus 0.460) is about one standard deviation, so it is suggestive and not established with three seeds.
+    \item \textbf{Chain-of-thought did not help.} It lowered Level-2 F1 from 0.499 to 0.429, consistent with the 2B model's tendency to produce degenerate reasoning.
+    \item \textbf{Increasing LoRA rank did not help.} Rank 8 and 16 were no better than rank 4, though each has a single seed, so this is weak evidence.
+    \item \textbf{The heatmaps are faithful but coarse.} The effect over random is large and consistent, so the maps reflect what the model uses at $7\times7$ resolution. They localise regions, not edges, and say nothing about the text branch.
+\end{enumerate}
+
+\subsection{Comparison with the published system}
+\label{sec:paper-gap}
+
+The SYNAPSE paper reports Level-1 0.920 and Level-2 0.426. Our direct replication of its recipe scored 0.656 and 0.318, and our best single run 0.692 and 0.505. We do not claim to match or beat the paper, for two reasons. First, a Level-1 score of 0.92 on our 100 images would require finding nearly all four support memes, whereas our replication found one of four at 96\% accuracy. Second, we have not confirmed that the paper's test split is the same as ours. Its figures come from our replication notes, not from the paper, and its class counts are not available to us. Treat the paper's numbers as \emph{reported, not reproduced and not shown to be comparable}. Our replication also differs from the paper in running at 8-bit on MLX rather than bf16 on a GPU.
+
+\section{Comparative Analysis}
+
+In summary, the Phase-I evidence supports four statements and no more:
+(i) every learned system is above the majority baseline at Level~2 but not clearly above the classical baseline;
+(ii) prompting a 2B VLM with no training is as good as, or better than, training it with LoRA on 500 images, unless minority oversampling is used;
+(iii) seed variance is as large as the gap between methods, so single-run claims are unsafe; and
+(iv) Grad-CAM on the classical baseline is demonstrably more faithful than chance.
+The classical baseline is cheap, stable and explainable by gradient, and its intersection recall (33\%) is similar to the prompted model's (33--40\%). The VLM arms cost more to run and their gains over it are within noise.
