@@ -1,0 +1,12 @@
+[train] r8_s43 rank=8 seed=43 oversample=False
+[infer] r8_s43 (train took 581s)
+[done] r8_s43 in 649s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r8_s43.json
+[train] r8_s44 rank=8 seed=44 oversample=False
+[infer] r8_s44 (train took 694s)
+[done] r8_s44 in 766s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r8_s44.json
+[train] r16_s43 rank=16 seed=43 oversample=False
+[infer] r16_s43 (train took 716s)
+[done] r16_s43 in 788s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r16_s43.json
+[train] r16_s44 rank=16 seed=44 oversample=False
+[infer] r16_s44 (train took 729s)
+[done] r16_s44 in 803s -> /Users/adithya/Final Year Project/code/outputs/arm3_peft_finetune/r16_s44.json

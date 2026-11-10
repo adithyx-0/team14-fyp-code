@@ -54,6 +54,11 @@ GRID = [
     # seed repeats of the oversampling arm: is the r4_os_s42 gain real or one lucky seed?
     ("r4_os_s43", 4, 43, True),
     ("r4_os_s44", 4, 44, True),
+    # extra seeds so rank 8 / rank 16 can be judged by a seed mean, like rank 4
+    ("r8_s43",   8,  43, False),
+    ("r8_s44",   8,  44, False),
+    ("r16_s43",  16, 43, False),
+    ("r16_s44",  16, 44, False),
 ]
 
 

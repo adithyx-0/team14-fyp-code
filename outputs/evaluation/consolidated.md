@@ -11,6 +11,8 @@ Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed
 | arm2_vlm_benchmark/qwen3vl2b_cot | 0.4819 [0.468, 0.495] | 0.4289 [0.319, 0.528] | 0.4554 [0.399, 0.505] | 0% / 0% |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | 0.4872 [0.474, 0.497] | 0.4986 [0.384, 0.601] | 0.4929 [0.435, 0.544] | 0% / 0% |
 | arm3_peft_finetune/r16_s42 | 0.6299 [0.479, 0.831] | 0.2338 [0.204, 0.260] | 0.4318 [0.348, 0.536] | 0% / 0% |
+| arm3_peft_finetune/r16_s43 | 0.5928 [0.471, 0.778] | 0.3925 [0.291, 0.502] | 0.4926 [0.396, 0.591] | 0% / 0% |
+| arm3_peft_finetune/r16_s44 | 0.4898 [0.479, 0.497] | 0.3929 [0.316, 0.460] | 0.4414 [0.403, 0.474] | 0% / 0% |
 | arm3_peft_finetune/r4_os_s42 | 0.6923 [0.485, 1.000] | 0.5051 [0.392, 0.603] | 0.5987 [0.457, 0.737] | 0% / 0% |
 | arm3_peft_finetune/r4_os_s43 | 0.4898 [0.479, 0.497] | 0.4454 [0.346, 0.552] | 0.4676 [0.417, 0.521] | 0% / 0% |
 | arm3_peft_finetune/r4_os_s44 | 0.4898 [0.479, 0.497] | 0.4960 [0.368, 0.607] | 0.4929 [0.429, 0.548] | 0% / 0% |
@@ -18,6 +20,8 @@ Macro-F1 with 95% percentile-bootstrap CIs (2000 resamples of the test set, seed
 | arm3_peft_finetune/r4_s43 | 0.6299 [0.476, 0.856] | 0.3425 [0.267, 0.414] | 0.4862 [0.387, 0.603] | 0% / 0% |
 | arm3_peft_finetune/r4_s44 | 0.4898 [0.479, 0.497] | 0.2772 [0.221, 0.339] | 0.3835 [0.356, 0.415] | 0% / 0% |
 | arm3_peft_finetune/r8_s42 | 0.6094 [0.474, 0.795] | 0.3288 [0.252, 0.401] | 0.4691 [0.377, 0.565] | 0% / 0% |
+| arm3_peft_finetune/r8_s43 | 0.6633 [0.476, 0.846] | 0.4541 [0.332, 0.572] | 0.5587 [0.440, 0.656] | 0% / 0% |
+| arm3_peft_finetune/r8_s44 | 0.4898 [0.479, 0.497] | 0.3566 [0.281, 0.426] | 0.4232 [0.385, 0.458] | 0% / 0% |
 | *SYNAPSE paper (reported, not reproduced)* | 0.9200 (reported) | 0.4256 (reported) | 0.6728 (reported) | n/a |
 
 ## Arm 3 seed summary (mean ± std over seeds)
@@ -26,10 +30,10 @@ Single seeds are not reliable at n=100; judge a config by its seed mean, not its
 
 | Config | Seeds | Level-1 macro-F1 | Level-2 macro-F1 | Avg-F1 |
 |---|---|---|---|---|
-| r16 | 1 | 0.630 (n=1) | 0.234 (n=1) | 0.432 (n=1) |
+| r16 | 3 | 0.571 ± 0.073 | 0.340 ± 0.092 | 0.455 ± 0.033 |
 | r4 | 3 | 0.571 ± 0.073 | 0.349 ± 0.075 | 0.460 ± 0.067 |
 | r4_os | 3 | 0.557 ± 0.117 | 0.482 ± 0.032 | 0.520 ± 0.070 |
-| r8 | 1 | 0.609 (n=1) | 0.329 (n=1) | 0.469 (n=1) |
+| r8 | 3 | 0.587 ± 0.089 | 0.380 ± 0.066 | 0.484 ± 0.069 |
 
 ## Paired bootstrap vs Arm 1
 
@@ -43,6 +47,8 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 | arm2_vlm_benchmark/qwen3vl2b_cot | -0.0257 [-0.137, +0.065] | 0.756 | +0.0349 [-0.106, +0.164] | 0.662 |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | -0.0204 [-0.131, +0.069] | 0.839 | +0.1046 [-0.028, +0.229] | 0.129 |
 | arm3_peft_finetune/r16_s42 | +0.1223 [-0.110, +0.392] | 0.497 | -0.1602 [-0.263, -0.060] | 0.003 |
+| arm3_peft_finetune/r16_s43 | +0.0852 [-0.114, +0.318] | 0.562 | -0.0015 [-0.128, +0.132] | 0.923 |
+| arm3_peft_finetune/r16_s44 | -0.0178 [-0.130, +0.073] | 0.873 | -0.0010 [-0.113, +0.115] | 0.959 |
 | arm3_peft_finetune/r4_os_s42 | +0.1847 [-0.104, +0.549] | 0.447 | +0.1111 [-0.016, +0.232] | 0.107 |
 | arm3_peft_finetune/r4_os_s43 | -0.0178 [-0.130, +0.073] | 0.873 | +0.0515 [-0.079, +0.184] | 0.463 |
 | arm3_peft_finetune/r4_os_s44 | -0.0178 [-0.130, +0.073] | 0.873 | +0.1020 [-0.044, +0.237] | 0.179 |
@@ -50,6 +56,8 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 | arm3_peft_finetune/r4_s43 | +0.1223 [-0.111, +0.409] | 0.503 | -0.0515 [-0.168, +0.061] | 0.357 |
 | arm3_peft_finetune/r4_s44 | -0.0178 [-0.130, +0.073] | 0.873 | -0.1167 [-0.220, -0.013] | 0.029 |
 | arm3_peft_finetune/r8_s42 | +0.1018 [-0.114, +0.354] | 0.529 | -0.0651 [-0.175, +0.048] | 0.237 |
+| arm3_peft_finetune/r8_s43 | +0.1557 [-0.099, +0.388] | 0.270 | +0.0601 [-0.076, +0.191] | 0.415 |
+| arm3_peft_finetune/r8_s44 | -0.0178 [-0.130, +0.073] | 0.873 | -0.0373 [-0.153, +0.078] | 0.495 |
 
 ## Per-class F1
 
@@ -62,6 +70,8 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 | arm2_vlm_benchmark/qwen3vl2b_cot | 0.964 | 0.000 | 0.633 | 0.320 | 0.333 |
 | arm2_vlm_benchmark/qwen3vl2b_zeroshot | 0.974 | 0.000 | 0.649 | 0.433 | 0.414 |
 | arm3_peft_finetune/r16_s42 | 0.974 | 0.286 | 0.701 | 0.000 | 0.000 |
+| arm3_peft_finetune/r16_s43 | 0.963 | 0.222 | 0.745 | 0.308 | 0.125 |
+| arm3_peft_finetune/r16_s44 | 0.980 | 0.000 | 0.688 | 0.491 | 0.000 |
 | arm3_peft_finetune/r4_os_s42 | 0.985 | 0.400 | 0.733 | 0.270 | 0.512 |
 | arm3_peft_finetune/r4_os_s43 | 0.980 | 0.000 | 0.731 | 0.480 | 0.125 |
 | arm3_peft_finetune/r4_os_s44 | 0.980 | 0.000 | 0.565 | 0.523 | 0.400 |
@@ -69,6 +79,8 @@ Same resampled test sets for every system, so each difference is paired. Two-sid
 | arm3_peft_finetune/r4_s43 | 0.974 | 0.286 | 0.709 | 0.318 | 0.000 |
 | arm3_peft_finetune/r4_s44 | 0.980 | 0.000 | 0.711 | 0.121 | 0.000 |
 | arm3_peft_finetune/r8_s42 | 0.969 | 0.250 | 0.716 | 0.270 | 0.000 |
+| arm3_peft_finetune/r8_s43 | 0.963 | 0.364 | 0.735 | 0.311 | 0.316 |
+| arm3_peft_finetune/r8_s44 | 0.980 | 0.000 | 0.714 | 0.356 | 0.000 |
 
 ## Level-2 confusion matrices (rows = gold, columns = predicted)
 
@@ -142,6 +154,26 @@ intersection recall: 40%
 
 intersection recall: 0%
 
+**arm3_peft_finetune/r16_s43**
+
+| gold \ pred | person | party | intersection | UNKNOWN |
+|---|---|---|---|---|
+| person | 54 | 0 | 0 | 0 |
+| party | 25 | 6 | 0 | 0 |
+| intersection | 12 | 2 | 1 | 0 |
+
+intersection recall: 7%
+
+**arm3_peft_finetune/r16_s44**
+
+| gold \ pred | person | party | intersection | UNKNOWN |
+|---|---|---|---|---|
+| person | 44 | 10 | 0 | 0 |
+| party | 17 | 14 | 0 | 0 |
+| intersection | 13 | 2 | 0 | 0 |
+
+intersection recall: 0%
+
 **arm3_peft_finetune/r4_os_s42**
 
 | gold \ pred | person | party | intersection | UNKNOWN |
@@ -209,6 +241,26 @@ intersection recall: 0%
 | person | 53 | 1 | 0 | 0 |
 | party | 26 | 5 | 0 | 0 |
 | intersection | 15 | 0 | 0 | 0 |
+
+intersection recall: 0%
+
+**arm3_peft_finetune/r8_s43**
+
+| gold \ pred | person | party | intersection | UNKNOWN |
+|---|---|---|---|---|
+| person | 50 | 4 | 0 | 0 |
+| party | 23 | 7 | 1 | 0 |
+| intersection | 9 | 3 | 3 | 0 |
+
+intersection recall: 20%
+
+**arm3_peft_finetune/r8_s44**
+
+| gold \ pred | person | party | intersection | UNKNOWN |
+|---|---|---|---|---|
+| person | 50 | 4 | 0 | 0 |
+| party | 23 | 8 | 0 | 0 |
+| intersection | 13 | 2 | 0 | 0 |
 
 intersection recall: 0%
 
