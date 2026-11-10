@@ -12,3 +12,6 @@ __pycache__/
 
 # Arm 3 LoRA adapters (reproducible from run_ablation.py)
 outputs/arm3_peft_finetune/adapters/
+
+# local API key file (never commit)
+.env.gemini

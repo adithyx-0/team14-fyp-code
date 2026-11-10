@@ -1,0 +1,35 @@
+{
+  "exemplars": [
+    {
+      "image": "images/train/287.jpg",
+      "level1": "troll",
+      "level2": "intersection"
+    },
+    {
+      "image": "images/train/243.jpg",
+      "level1": "troll",
+      "level2": "person"
+    },
+    {
+      "image": "images/train/596.jpg",
+      "level1": "support",
+      "level2": "person"
+    },
+    {
+      "image": "images/train/166.jpg",
+      "level1": "troll",
+      "level2": "party"
+    },
+    {
+      "image": "images/train/97.jpg",
+      "level1": "support",
+      "level2": "intersection"
+    },
+    {
+      "image": "images/train/36.jpg",
+      "level1": "support",
+      "level2": "party"
+    }
+  ],
+  "test_ids_in_prompt": 0
+}

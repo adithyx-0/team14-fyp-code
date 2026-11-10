@@ -1,0 +1,66 @@
+{
+ "n": 201,
+ "dataset": "Tamil POLITICAL memes (not misogyny set)",
+ "ocr": "tesseract tam+eng",
+ "ocr_nonempty": 168,
+ "level1": {
+  "gold_classes": [
+   "troll",
+   "support"
+  ],
+  "macro_f1": 0.47429653679653677,
+  "ci95": [
+   0.4159030585052994,
+   0.5388595979954646
+  ],
+  "majority_class": "troll",
+  "majority_f1": 0.4654255319148936,
+  "majority_ci95": [
+   0.45081967213114754,
+   0.4779220779220779
+  ],
+  "per_class_f1": {
+   "troll": 0.8273809523809523,
+   "support": 0.12121212121212122
+  },
+  "pred_counts": {
+   "troll": 161,
+   "support": 40
+  },
+  "gold_counts": {
+   "troll": 175,
+   "support": 26
+  }
+ },
+ "level2": {
+  "gold_classes": [
+   "person",
+   "party"
+  ],
+  "macro_f1": 0.4550620482179417,
+  "ci95": [
+   0.381781322280488,
+   0.5265896176637714
+  ],
+  "majority_class": "person",
+  "majority_f1": 0.44166666666666665,
+  "majority_ci95": [
+   0.4224137931034483,
+   0.4582210242587601
+  ],
+  "per_class_f1": {
+   "person": 0.6463878326996197,
+   "party": 0.26373626373626374
+  },
+  "pred_counts": {
+   "person": 104,
+   "party": 49,
+   "intersection": 48
+  },
+  "gold_counts": {
+   "person": 159,
+   "party": 42,
+   "intersection": 0
+  }
+ }
+}
